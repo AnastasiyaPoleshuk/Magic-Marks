@@ -1,0 +1,92 @@
+@import '/src/App.variables.scss';
+
+.login-form__container {
+    width: 450px;
+    height: 70vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+        height: 80%;
+        margin-top: 30px;
+    }
+
+    .login-form__img {
+        width: 100px;
+        border-radius: 50%;
+    }
+
+    .login-form__title {
+        @include h3;
+        color: $main-color-yellow;
+        margin-bottom: 10px;
+
+    }
+
+    .login-form__input {
+        width: 100%;
+        height: 40px;
+        background: $main-color-light;
+        border: 0px;
+        border-radius: 20px;
+        outline: 0;
+        padding: 5px 15px;
+
+
+        &::placeholder {
+            font-family: $font-family;
+            font-size: $subtitle-font;
+        }
+
+
+    }
+
+    .form-btn__wrapper {
+        margin: 15px 0 0 0;
+    }
+
+    .form-btn {
+        width: 120px;
+        height: 40px;
+        background: none;
+        border: 2px solid $main-color-pink;
+        border-radius: 20px;
+        color: $main-color-light;
+        text-align: center;
+        cursor: pointer;
+        padding: 10px 0;
+        transition: .3s;
+
+
+        &:last-child {
+            margin-left: 20px;
+        }
+
+        &:hover {
+            border: 2px solid $main-color-yellow;
+            color: $main-color-yellow;
+        }
+    }
+
+    .form-error {
+        font-size: $descr-font;
+        color: rgb(192, 11, 50);
+        padding: -10px 0 0 0;
+    }
+
+    .input-error {
+        border: 1px solid rgb(192, 11, 50);
+    }
+
+    .none {
+        display: none;
+    }
+}

@@ -1,17 +1,68 @@
+@import '/src/App.variables.scss';
+
 .header {
-  height: 60px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid rgb(10, 7, 7);
+  // background: #48195D;
+  background: $main-color-purple;
+  // background: linear-gradient(to bottom right, $main-color-yellow, $main-color-pink, $main-color-purple);
+  padding: 0 15px;
+  // border-bottom-left-radius: 15px;
+  // border-bottom-right-radius: 15px;
+  // border: 1px solid rgb(10, 7, 7);
 
   .btn-home {
-    width: 30px;
-    height: 30px;
-    background: #000;
+    width: 45px;
+    height: 45px;
+    box-sizing: border-box;
+  }
+
+  .logo {
+    width: 45px;
+    height: 45px;
   }
 
   .menu-btn {
+    width: 50px;
+    height: 30px;
+    background: none;
+    display: flex;
+    align-items: center;
+    position: relative;
     cursor: pointer;
+
+    &::after,
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 50px;
+      height: 5px;
+      border-radius: 10px;
+      background: $main-color-yellow;
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+
+
   }
+
+  .burger-menu {
+    width: 50px;
+    height: 5px;
+    border-radius: 10px;
+    background: $main-color-yellow;
+    position: relative;
+
+  }
+
 }

@@ -15,6 +15,7 @@ html {
 }
 
 body {
+    background: $main-color-light;
     @include font;
 }
 
