@@ -3,11 +3,12 @@ $text-font: 18px;
 $subtitle-font: 20px;
 $title-font: 24px;
 $big-font: 36px;
-$font-family: 'Jost', sans-serif;
-$main-color-light: rgb(245, 243, 247);
+$font-family: 'Mulish', sans-serif;
+$main-color-light: rgb(246, 236, 255);
 $main-color-yellow: #FFD98F;
 $main-color-pink: #DA7DA8;
-$main-color-purple: #3F2274;
+$main-color-purple: #250e52;
+$main-color-bark-blue: #3f1e6b;
 
 $main-width: 1400px;
 
@@ -16,7 +17,6 @@ $main-width: 1400px;
     font-size: $text-font;
     font-weight: normal;
     letter-spacing: 1;
-    // color: $font-color;
 }
 
 @mixin h1 {
