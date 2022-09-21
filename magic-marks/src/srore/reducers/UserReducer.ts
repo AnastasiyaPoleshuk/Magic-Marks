@@ -21,7 +21,7 @@ const UserReducer: IReducer = (state = initialState as unknown as IStore, action
       return {
         ...state,
         login: {
-          token: action.payload.token,
+          token: action.payload.accsess_token,
           isAuth: action.payload.isAuthenticated,
         },
       };

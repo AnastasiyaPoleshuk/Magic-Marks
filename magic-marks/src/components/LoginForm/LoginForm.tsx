@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { ILoginFormData, IStore } from '../../types/interfaces';
 import LoginThunk from '../../srore/thunks/LoginThunk';
 import './LoginForm.scss';
 import path from '../../assets/login-img.png';
-// import UserAction from '../../srore/actions/UserAction';
 
 interface IProps {
   close: () => void,
@@ -23,17 +22,19 @@ const LoginForm = (props: IProps) => {
   const dispatch = useDispatch();
   const loginUser = useSelector((state: IStore) => { return state.loginUser.login; });
 
-  const onSubmit: SubmitHandler<ILoginFormData> = (data) => {
-    // @ts-ignore
-    dispatch(LoginThunk(data));
-    console.log(loginUser);
-
+  useEffect(() => {
     if (loginUser.isAuth) {
-      reset();
       close();
     } else {
       setCorrectData(loginUser.isAuth);
     }
+  }, [loginUser.isAuth]);
+
+  const onSubmit: SubmitHandler<ILoginFormData> = (data) => {
+    // @ts-ignore
+    dispatch(LoginThunk(data)).then(() => {
+      reset();
+    });
   };
 
   return (
@@ -42,7 +43,7 @@ const LoginForm = (props: IProps) => {
         <img src={path} alt="login pic" className="login-form__img" />
         <form action="#" className="form" onSubmit={handleSubmit(onSubmit)}>
 
-          <h2 className="login-form__title">Login</h2>
+          <h2 className="login-form__title">Вход</h2>
 
           <input
             className={`login-form__input ${errors.email ? 'input-error' : null}`}
@@ -50,31 +51,31 @@ const LoginForm = (props: IProps) => {
             {...register('email', { required: true, pattern: /([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/ })}
           />
           <p className={`form-error ${errors.email ? 'open' : null}`}>
-            *field must contain email
+            *Поле должно содержать email
           </p>
 
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Пароль"
             className={`login-form__input ${errors.password ? 'input-error' : null}`}
             {...register('password', { required: true, minLength: 3 })}
           />
 
           <p className={`form-error ${errors.password ? 'open' : null}`}>
-            *Required field of at least three characters
+            *Длина пароля должна быть не меньше 3 символов
           </p>
 
           {
             !isCorrectData && (
             <p className="wrong-data">
-              Wrong Email or password
+              Неправильный email или пароль
             </p>
             )
           }
 
           <div className="form-btn__wrapper">
-            <input type="submit" value="Ok" className="form-btn" />
-            <input type="button" onClick={close} value="Cancel" className="form-btn" />
+            <input type="submit" value="Войти" className="form-btn" />
+            <input type="button" onClick={close} value="Закрыть" className="form-btn" />
           </div>
         </form>
 

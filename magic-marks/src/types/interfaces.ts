@@ -9,7 +9,7 @@ export interface ILogin {
 }
 
 export interface ILoginResponse {
-  token: string;
+  accsess_token: string;
   isAuthenticated: boolean,
 }
 
