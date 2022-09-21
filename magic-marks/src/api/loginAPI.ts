@@ -1,7 +1,7 @@
 import CONSTANTS from '../utils/constants';
-import { ILoginFormData } from '../types/interfaces';
+import { ILoginUser } from '../types/interfaces';
 
-const createUser = async (data: ILoginFormData) => {
+const createUser = async (data: ILoginUser) => {
   const response = await fetch(`${CONSTANTS.URL}/login`, {
     method: 'POST',
     headers: new Headers({

@@ -1,10 +1,10 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
-import { IRegistrationFormData, IStore } from '../../types/interfaces';
+// import { useDispatch, useSelector } from 'react-redux';
+import { IRegistrationFormData } from '../../types/interfaces';
 // import LoginThunk from '../../srore/thunks/LoginThunk';
 import './RegistrationForm.scss';
 import path from '../../assets/login-img.png';
-import UserAction from '../../srore/actions/UserAction';
+// import UserAction from '../../srore/actions/UserAction';
 
 interface IProps {
   close: () => void,
@@ -18,13 +18,10 @@ const LoginForm = (props: IProps) => {
     reset,
     formState: { errors },
   } = useForm<IRegistrationFormData>();
-  const dispatch = useDispatch();
-  const user = useSelector((state: IStore) => { return state.loginUser.user; });
+  // const dispatch = useDispatch();
+  // const user = useSelector((state: IStore) => { return state.loginUser; });
 
-  const onSubmit: SubmitHandler<IRegistrationFormData> = (data) => {
-    dispatch(UserAction(data));
-    console.log(user);
-
+  const onSubmit: SubmitHandler<IRegistrationFormData> = () => {
     reset();
     close();
   };
