@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import { IStore } from '../../types/interfaces';
@@ -9,13 +9,8 @@ import './Main.scss';
 import path from '../../assets/main-image.png';
 
 const Main = () => {
-  const navigate = useNavigate();
   const [isOpenModal, setIsOpenModal] = useState(false);
   const loginUser = useSelector((state: IStore) => { return state.loginUser.login; });
-
-  useEffect(() => {
-    if (loginUser.isAuth) navigate('/subjects');
-  }, [loginUser.isAuth]);
 
   const toggleModal = () => {
     setIsOpenModal(!isOpenModal);

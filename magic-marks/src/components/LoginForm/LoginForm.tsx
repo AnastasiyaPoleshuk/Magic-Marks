@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { ILoginUser, IStore } from '../../types/interfaces';
@@ -19,6 +20,7 @@ const LoginForm = (props: IProps) => {
     reset,
     formState: { errors },
   } = useForm<ILoginUser>();
+  const navigate = useNavigate();
   const [isCorrectData, setCorrectData] = useState(true);
   const dispatch = useDispatch();
   const loginUser = useSelector((state: IStore) => { return state.loginUser.login; });
@@ -26,6 +28,7 @@ const LoginForm = (props: IProps) => {
   useEffect(() => {
     if (loginUser.isAuth) {
       close();
+      navigate('/subjects');
     } else {
       setCorrectData(loginUser.isAuth);
     }
