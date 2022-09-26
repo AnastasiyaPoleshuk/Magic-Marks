@@ -1,14 +1,14 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
-import createUser from '../../api/loginAPI';
+import loginUser from '../../api/loginAPI';
 import {
-  ILoginUser, ICreateUserResponse, ILoginResponse,
+  ILoginUser, ILoginUserResponse, ILoginResponse,
 } from '../../types/interfaces';
 import UserAction from '../actions/UserAction';
 
 const LoginThunk = (data: ILoginUser) => {
-  return async function (dispatch: (dispatch: unknown) => Promise<ICreateUserResponse>) {
-    const response = await createUser(data);
+  return async function (dispatch: (dispatch: unknown) => Promise<ILoginUserResponse>) {
+    const response = await loginUser(data);
     if (response.isAuthenticated) {
       dispatch(UserAction(response as ILoginResponse));
     }

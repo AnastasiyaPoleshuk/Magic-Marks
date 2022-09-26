@@ -30,7 +30,7 @@ export interface IStore {
   },
 }
 
-export interface ICreateUserResponse {
+export interface ILoginUserResponse {
   isAuthenticated: boolean,
   accsess_token: string,
 }
