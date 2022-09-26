@@ -15,6 +15,7 @@ html {
 }
 
 body {
+    background: $main-color-purple;
     @include font;
 }
 
@@ -42,4 +43,9 @@ body {
 .footer {
     width: 100%;
     flex: 0 0 auto;
+}
+
+.container {
+    width: $main-width;
+    margin: 0 auto;
 }

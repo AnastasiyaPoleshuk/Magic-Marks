@@ -2,39 +2,102 @@
 
 .main {
   width: 100%;
-  height: 825px;
+  height: 86vh;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  border: 1px solid #111;
+  position: relative;
+  z-index: 1;
 
-  .title-blok {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    flex: 1;
+  .description-top {
+    width: 100%;
+    text-align: left;
+    font-size: $subtitle-font;
+    text-transform: uppercase;
+    color: $main-color-pink;
+    margin: 0px 0 20px 235px;
   }
 
   .title {
+    width: 100%;
     @include h1;
-    margin: 0px 0px 40px 15px;
-    text-align: center;
+    font-size: $big-font * 5;
+    text-transform: uppercase;
+    color: $main-color-light;
   }
 
-  .log-in__btn {
-    width: 100px;
-    height: 50px;
+  .title__part-one {
+    text-align: left;
+
+    & span {
+      display: inline-block;
+      width: 550px;
+      line-height: 33px;
+      letter-spacing: 1px;
+      vertical-align: super;
+      font-weight: 300;
+      text-align: right;
+      font-size: $big-font;
+      text-transform: none;
+      color: $main-color-light;
+      margin: 0 0 0 50px;
+    }
+  }
+
+  .title__part-two {
+    text-align: right;
+    margin-top: 30px;
+  }
+
+  .description-block {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 100px 0 0 0;
+  }
+
+  .description-block__wrapp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 0.8;
+    align-self: flex-start;
+  }
+
+  .description-bottom {
+    width: 50%;
+    text-align: center;
+    font-style: italic;
+    font-size: $text-font;
+    color: $main-color-light;
+    margin-bottom: 40px;
+  }
+
+  .log-in__btn,
+  .subjects__btn {
+    width: 250px;
+    height: 40px;
     background: none;
-    border: 1px solid #111;
-    border-radius: 10px;
+    border: 2px solid $main-color-yellow;
+    border-radius: 20px;
+    color: $main-color-yellow;
     outline: 0;
     padding: 5px 10px;
+    transition: .5s;
+    text-align: center;
+    vertical-align: center;
+
+    &:hover {
+      background: $main-color-yellow;
+      color: $main-color-purple;
+    }
   }
 
   .main-img {
-    flex: 1;
-    height: 100%;
-    border: 1px solid #111;
+    flex: 0.8;
+    height: 310px;
   }
 }

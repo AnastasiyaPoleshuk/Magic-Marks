@@ -9,18 +9,20 @@ import './App.scss';
 
 const App = () => {
   return (
-    <div className="app">
+    <>
       <Header />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/subjects" element={<Subjects />} />
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/subjects" element={<Subjects />} />
 
-        <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile />} />
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

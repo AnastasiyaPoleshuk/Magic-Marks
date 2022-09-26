@@ -1,17 +1,91 @@
+@import '/src/App.variables.scss';
+
 .header {
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid rgb(10, 7, 7);
+  height: 70px;
+  background: $main-color-bark-blue;
+
+  .header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+  }
 
   .btn-home {
-    width: 30px;
-    height: 30px;
-    background: #000;
+    width: 45px;
+    height: 45px;
+    box-sizing: border-box;
   }
 
-  .menu-btn {
-    cursor: pointer;
+  .logo {
+    width: 55px;
+    height: 45px;
   }
+
+  nav {
+    position: relative;
+  }
+
+  .menu {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu__item {
+    background: none;
+    border: none;
+    font-size: $descr-font;
+    font-style: italic;
+    color: $main-color-light;
+    transition: .3s;
+
+    &:hover {
+      color: $main-color-yellow;
+    }
+
+    .menu__profile {
+      width: 50px;
+    }
+
+    &.menu__subjects::after {
+      content: '';
+      position: absolute;
+      left: -1px;
+      bottom: 13px;
+      height: 2px;
+      width: 0px;
+      background: $main-color-yellow;
+      transition: 400ms ease all;
+
+
+    }
+
+    &.menu__subjects:hover::after {
+      width: 60px;
+      transition: 800ms ease all;
+    }
+
+    &.menu__login::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      bottom: -1px;
+      height: 2px;
+      width: 0px;
+      background: $main-color-yellow;
+      transition: 400ms ease all;
+
+
+    }
+
+    &.menu__login:hover::after {
+      width: 45px;
+      transition: 800ms ease all;
+    }
+  }
+
+
+
 }
