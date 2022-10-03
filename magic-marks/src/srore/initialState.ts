@@ -12,6 +12,12 @@ const initialState = {
     AverageMark: 0,
     Subjects: [],
   },
+  marks: {
+    SubjectId: 0,
+    SubjectName: '',
+    AverageMark: 0,
+    Marks: [],
+  },
   isAuth: false,
 };
 

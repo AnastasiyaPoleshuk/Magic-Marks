@@ -1,5 +1,5 @@
-import { ILoginResponse, IGetUserResponse } from '../../types/interfaces';
-import { LOGIN__USER, GET__USER } from '../actionTypes';
+import { ILoginResponse, IGetUserResponse, IGetMarksResponse } from '../../types/interfaces';
+import { LOGIN__USER, GET__USER, GET__MARKS } from '../actionTypes';
 
 export const LoginUserAction = (payload: ILoginResponse) => {
   return { type: LOGIN__USER, payload };
@@ -7,4 +7,8 @@ export const LoginUserAction = (payload: ILoginResponse) => {
 
 export const GetUserAction = (payload: IGetUserResponse) => {
   return { type: GET__USER, payload };
+};
+
+export const GetMarksAction = (payload: IGetMarksResponse) => {
+  return { type: GET__MARKS, payload };
 };

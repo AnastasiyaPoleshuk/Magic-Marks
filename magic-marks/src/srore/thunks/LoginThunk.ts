@@ -1,16 +1,13 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-unused-vars */
+import { Dispatch } from 'redux';
 import loginUser from '../../api/loginAPI';
-import {
-  ILoginUser, ILoginUserResponse, ILoginResponse,
-} from '../../types/interfaces';
-import UserAction from '../actions/UserAction';
+import { ILoginUser } from '../../types/interfaces';
+import { LoginUserAction } from '../actions/UserAction';
 
 const LoginThunk = (data: ILoginUser) => {
-  return async function (dispatch: (dispatch: unknown) => Promise<ILoginUserResponse>) {
+  return async function (dispatch: Dispatch) {
     const response = await loginUser(data);
     if (response.isAuthenticated) {
-      dispatch(UserAction(response as ILoginResponse));
+      dispatch(LoginUserAction(response));
     }
   };
 };
