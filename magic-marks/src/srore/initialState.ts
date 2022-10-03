@@ -3,6 +3,15 @@ const initialState = {
     token: '',
     isAuth: false,
   },
+  user: {
+    UserId: '',
+    Email: '',
+    FirstName: '',
+    LastName: '',
+    Class: '',
+    AverageMark: 0,
+    Subjects: [],
+  },
   isAuth: false,
 };
 

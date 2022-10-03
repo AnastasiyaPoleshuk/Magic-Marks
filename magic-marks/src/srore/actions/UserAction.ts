@@ -1,8 +1,10 @@
-import { ILoginResponse } from '../../types/interfaces';
-import { LOGIN__USER } from '../actionTypes';
+import { ILoginResponse, IGetUserResponse } from '../../types/interfaces';
+import { LOGIN__USER, GET__USER } from '../actionTypes';
 
-const LoginUserAction = (payload: ILoginResponse) => {
+export const LoginUserAction = (payload: ILoginResponse) => {
   return { type: LOGIN__USER, payload };
 };
 
-export default LoginUserAction;
+export const GetUserAction = (payload: IGetUserResponse) => {
+  return { type: GET__USER, payload };
+};

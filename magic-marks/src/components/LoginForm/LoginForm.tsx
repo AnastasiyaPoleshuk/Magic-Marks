@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AnyAction } from 'redux';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +8,7 @@ import LoginThunk from '../../srore/thunks/LoginThunk';
 import locales from '../../locales/ru-Ru';
 import './LoginForm.scss';
 import path from '../../assets/login-img.png';
+import GetUserThunk from '../../srore/thunks/GetUserThunk';
 
 interface IProps {
   close: () => void,
@@ -28,6 +30,7 @@ const LoginForm = (props: IProps) => {
   useEffect(() => {
     if (loginUser.isAuth) {
       close();
+      dispatch(GetUserThunk({ token: loginUser.token }) as unknown as AnyAction);
       navigate('/subjects');
     } else {
       setCorrectData(loginUser.isAuth);
@@ -35,10 +38,10 @@ const LoginForm = (props: IProps) => {
   }, [loginUser.isAuth]);
 
   const onSubmit: SubmitHandler<ILoginUser> = (data) => {
-    // @ts-ignore
-    dispatch(LoginThunk(data)).then(() => {
-      reset();
-    });
+    dispatch(LoginThunk(data) as unknown as AnyAction)
+      .then(() => {
+        reset();
+      });
   };
 
   return (
