@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AnyAction } from 'redux';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -35,8 +36,7 @@ const LoginForm = (props: IProps) => {
   }, [loginUser.isAuth]);
 
   const onSubmit: SubmitHandler<ILoginUser> = (data) => {
-    // @ts-ignore
-    dispatch(LoginThunk(data)).then(() => {
+    dispatch(LoginThunk(data) as unknown as AnyAction).then(() => {
       reset();
     });
   };
