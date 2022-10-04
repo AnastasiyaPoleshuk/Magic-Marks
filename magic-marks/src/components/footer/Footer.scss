@@ -1,0 +1,26 @@
+@import '/src/App.variables.scss';
+
+.footer {
+  background: $main-color-bark-blue;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  color: $main-color-light;
+
+  .footer__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .footer-item {
+    z-index: 1;
+    font-size: $text-font;
+    transition: all .3s;
+  }
+
+  .footer-item__link:hover {
+    color: $main-color-yellow;
+  }
+}
