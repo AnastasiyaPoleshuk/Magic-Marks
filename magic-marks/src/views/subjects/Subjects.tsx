@@ -6,8 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import { IStore } from '../../types/interfaces';
 import locales from '../../locales/ru-Ru';
 import BookAnimation from './animation/BookAnimation';
-import './Subjects.scss';
 import GetMarksThunk from '../../srore/thunks/GetMarksThunk';
+import SubjectsList from '../../components/SubjectsList/SubjectsList';
+import './Subjects.scss';
 
 const Subjects = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Subjects = () => {
   }, [marks]);
 
   // eslint-disable-next-line consistent-return
-  function getAnimationData(event: React.MouseEvent<HTMLUListElement, MouseEvent>) {
+  const getAnimationData = (event: React.MouseEvent<HTMLUListElement, MouseEvent>) => {
     const elem = event.target as HTMLElement;
 
     if (!elem.classList.contains('subject-name')) {
@@ -44,7 +45,7 @@ const Subjects = () => {
       token: loginUser.token,
       subjectId: elem.id,
     }) as unknown as AnyAction);
-  }
+  };
 
   return (
     <section className="container">
@@ -55,16 +56,7 @@ const Subjects = () => {
         </div>
         <div className="book__container">
           <div className="left-side">
-            <ul className="subject__container" onClick={(event) => { return getAnimationData(event); }}>
-              {user.Subjects.map((subject) => {
-                return (
-                  <li className="item" key={subject.SubjectId}>
-                    <div className="subject-name" id={`${subject.SubjectId}`}>{subject.SubjectName}</div>
-                    <div className="average-mark">{subject.AverageMark}</div>
-                  </li>
-                );
-              })}
-            </ul>
+            <SubjectsList animateBook={getAnimationData} />
           </div>
           <div className="right-side" ref={pages}>
             <div className="page" id="page-0">
@@ -75,7 +67,9 @@ const Subjects = () => {
               && user.Subjects.map((subject) => {
                 return (
                   <div className="page" id={`page-${subject.SubjectId}`} key={subject.SubjectId}>
-                    <div className="l-side" />
+                    <div className="l-side">
+                      <SubjectsList animateBook={getAnimationData} />
+                    </div>
                     <div className="r-side">
                       <div className="content">{marks.Marks.join(' ')}</div>
                     </div>

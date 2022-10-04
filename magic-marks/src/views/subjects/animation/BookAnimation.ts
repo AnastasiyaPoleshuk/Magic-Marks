@@ -10,10 +10,9 @@ const BookAnimation = (
   marksPages.forEach((page) => {
     page.classList.remove('open');
   });
-  console.log(marksPages, index);
-  turnPage(marksPages[index], marksPages);
+  turnPage(marksPages[index - 1], marksPages);
 
-  marksPages[index - 1].classList.add('open');
+  marksPages[index].classList.add('open');
 };
 
 function turnPage(activePage: Element, pages: Element[]) {
@@ -23,7 +22,6 @@ function turnPage(activePage: Element, pages: Element[]) {
       page.classList.remove('hide');
     }
   });
-  console.log(activePage);
 
   activePage.classList.add('flip-right-to-left');
   setTimeout(() => {
