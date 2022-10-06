@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ModalContext } from '../../context/ModalContext';
 import './ModalWindow.scss';
 
 interface IProps {
-  close: () => void,
   children: React.ReactNode,
+  type: string,
 }
 
-const ModalWindow = (props: IProps) => {
-  const { close, children } = props;
+const ModalWindow = ({ children, type }: IProps) => {
+  const { closeModal } = useContext(ModalContext);
   return (
-    <section className="overlay" onClick={close}>
+    <section className="overlay" onClick={() => { return closeModal(type); }}>
       <div className="modal-window" onClick={(e) => { return e.stopPropagation(); }}>
         {children}
       </div>

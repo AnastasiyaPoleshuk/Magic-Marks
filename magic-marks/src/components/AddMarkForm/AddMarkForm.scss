@@ -1,0 +1,76 @@
+@import '/src/App.variables.scss';
+
+.marks-form__container {
+  width: 45vw;
+  height: 30vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 5px 20px;
+
+  .marks-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 25px 0;
+  }
+
+  .modal-title {
+    @include h3;
+    text-align: center;
+    color: $main-color-yellow;
+  }
+
+  .marks-form__input {
+    width: 200px;
+    height: 35px;
+    border: 2px solid $main-color-pink;
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin-top: 30px;
+    outline: 0;
+  }
+
+  .form-error {
+    width: 26vw;
+    margin-top: 10px;
+    visibility: hidden;
+    color: rgb(223, 56, 92);
+  }
+
+  .open {
+    visibility: visible;
+  }
+
+  .form-btn__wrapper {
+    margin-top: 15px;
+  }
+
+  .form-btn {
+    width: 120px;
+    height: 40px;
+    background: none;
+    border: 2px solid $main-color-pink;
+    border-radius: 20px;
+    color: $main-color-light;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px 0;
+    transition: .3s;
+
+
+    &:last-child {
+      margin-left: 20px;
+    }
+
+    &:hover {
+      border: 2px solid $main-color-yellow;
+      color: $main-color-yellow;
+    }
+  }
+
+  .marks-modal-img {
+    width: 220px;
+  }
+}

@@ -10,12 +10,21 @@ const locales = {
       passwordError: '*Длина пароля должна быть не меньше 3 символов',
       loginError: 'Неправильный email или пароль',
     },
+    SubjectsPage: {
+      subjects: 'Предметы',
+      addMark: 'Добавить оценки',
+      marksError: '*Содержимое должно быть в диапазоне от 1 до 10',
+    },
   },
   common: {
     dairy: 'Дневник',
     login: 'Войти',
     submit: 'Войти',
     cancel: 'Закрыть',
+    ok: 'Отправить',
+    add: 'Добавить',
+    delete: 'Удалить',
+    marks: 'Оценки',
   },
 };
 

@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import store from './srore/store';
 import './index.scss';
 import App from './App';
+import { ModalState } from './context/ModalContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -11,8 +12,10 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
+    <ModalState>
+      <Router>
+        <App />
+      </Router>
+    </ModalState>
   </Provider>,
 );
