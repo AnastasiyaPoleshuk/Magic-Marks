@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
@@ -7,14 +7,12 @@ import { IStore } from '../../types/interfaces';
 import locales from '../../locales/ru-Ru';
 import './Main.scss';
 import path from '../../assets/main-image.png';
+import { ModalContext } from '../../context/ModalContext';
+import CONSTANTS from '../../utils/constants';
 
 const Main = () => {
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const { loginModal, openModal } = useContext(ModalContext);
   const loginUser = useSelector((state: IStore) => { return state.loginUser.login; });
-
-  const toggleModal = () => {
-    setIsOpenModal(!isOpenModal);
-  };
 
   return (
     <main className="container">
@@ -35,16 +33,16 @@ const Main = () => {
             {
               loginUser.isAuth
                 ? <NavLink to="/subjects" className="subjects__btn">{locales.common.dairy}</NavLink>
-                : <button type="button" className="log-in__btn" onClick={toggleModal}>{locales.common.login}</button>
+                : <button type="button" className="log-in__btn" onClick={() => { return openModal(CONSTANTS.LOGIN__MODAL); }}>{locales.common.login}</button>
             }
           </div>
           <img src={path} alt="main img" className="main-img" />
         </div>
       </div>
-      {isOpenModal
+      {loginModal
       && (
-      <ModalWindow close={toggleModal}>
-        <LoginForm close={toggleModal} />
+      <ModalWindow type={CONSTANTS.LOGIN__MODAL}>
+        <LoginForm />
       </ModalWindow>
       )}
 

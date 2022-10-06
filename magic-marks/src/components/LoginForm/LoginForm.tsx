@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+/* eslint-disable no-unused-expressions */
+import { useContext, useEffect, useState } from 'react';
 import { AnyAction } from 'redux';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -9,13 +10,10 @@ import locales from '../../locales/ru-Ru';
 import './LoginForm.scss';
 import path from '../../assets/login-img.png';
 import GetUserThunk from '../../srore/thunks/GetUserThunk';
+import { ModalContext } from '../../context/ModalContext';
+import CONSTANTS from '../../utils/constants';
 
-interface IProps {
-  close: () => void,
-}
-
-const LoginForm = (props: IProps) => {
-  const { close } = props;
+const LoginForm = () => {
   const {
     register,
     handleSubmit,
@@ -24,12 +22,13 @@ const LoginForm = (props: IProps) => {
   } = useForm<ILoginUser>();
   const navigate = useNavigate();
   const [isCorrectData, setCorrectData] = useState(true);
+  const { closeModal } = useContext(ModalContext);
   const dispatch = useDispatch();
   const loginUser = useSelector((state: IStore) => { return state.loginUser.login; });
 
   useEffect(() => {
     if (loginUser.isAuth) {
-      close();
+      closeModal(`${CONSTANTS.LOGIN__MODAL}`);
       dispatch(GetUserThunk({ token: loginUser.token }) as unknown as AnyAction);
       navigate('/subjects');
     } else {
@@ -82,7 +81,7 @@ const LoginForm = (props: IProps) => {
 
           <div className="form-btn__wrapper">
             <input type="submit" value={locales.common.submit} className="form-btn" />
-            <input type="button" onClick={close} value={locales.common.cancel} className="form-btn" />
+            <input type="button" onClick={() => { return closeModal(CONSTANTS.LOGIN__MODAL); }} value={locales.common.cancel} className="form-btn" />
           </div>
         </form>
 
