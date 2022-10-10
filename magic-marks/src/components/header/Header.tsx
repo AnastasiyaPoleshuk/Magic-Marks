@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import './Header.scss';
 import { useSelector } from 'react-redux';
 import { useContext } from 'react';
-import path from '../../assets/logo-1.png';
+import path from '../../assets/logo.png';
 import pathProfile from '../../assets/profile-img.png';
 import { IStore } from '../../types/interfaces';
 import ModalWindow from '../ModalWindow/ModalWindow';

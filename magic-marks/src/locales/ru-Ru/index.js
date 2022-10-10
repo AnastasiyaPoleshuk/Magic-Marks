@@ -21,7 +21,7 @@ const locales = {
     login: 'Войти',
     submit: 'Войти',
     cancel: 'Закрыть',
-    ok: 'Отправить',
+    ok: 'Загрузить',
     add: 'Добавить',
     delete: 'Удалить',
     marks: 'Оценки',

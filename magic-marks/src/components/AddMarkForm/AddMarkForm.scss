@@ -1,18 +1,19 @@
 @import '/src/App.variables.scss';
 
 .marks-form__container {
-  width: 45vw;
+  width: 585px;
   height: 30vh;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   margin: 5px 20px;
 
   .marks-form {
+    width: 365px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     margin: 25px 0;
   }
 
