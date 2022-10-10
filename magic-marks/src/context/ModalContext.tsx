@@ -5,6 +5,7 @@ import CONSTANTS from '../utils/constants';
 interface IModalContext {
     loginModal: boolean,
     addMarkModal: boolean,
+    errorModal: boolean,
     openModal: (type: string) => void,
     closeModal: (type: string) => void,
 }
@@ -12,6 +13,7 @@ interface IModalContext {
 export const ModalContext = createContext<IModalContext>({
   loginModal: false,
   addMarkModal: false,
+  errorModal: false,
   openModal: () => {},
   closeModal: () => {},
 });
@@ -19,6 +21,7 @@ export const ModalContext = createContext<IModalContext>({
 export const ModalState = ({ children }: {children: React.ReactNode}) => {
   const [loginModal, setLoginModal] = useState(false);
   const [addMarkModal, setAddMarkModal] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
 
   const openModal = (type: string) => {
     switch (type) {
@@ -27,6 +30,9 @@ export const ModalState = ({ children }: {children: React.ReactNode}) => {
         break;
       case CONSTANTS.MARKS__MODAL:
         setAddMarkModal(true);
+        break;
+      case CONSTANTS.ERROR__MODAL:
+        setErrorModal(true);
         break;
       default:
         break;
@@ -40,13 +46,16 @@ export const ModalState = ({ children }: {children: React.ReactNode}) => {
       case CONSTANTS.MARKS__MODAL:
         setAddMarkModal(false);
         break;
+      case CONSTANTS.ERROR__MODAL:
+        setErrorModal(false);
+        break;
       default:
         break;
     }
   };
   return (
     <ModalContext.Provider value={{
-      loginModal, addMarkModal, openModal, closeModal,
+      loginModal, addMarkModal, errorModal, openModal, closeModal,
     }}
     >
       {children}

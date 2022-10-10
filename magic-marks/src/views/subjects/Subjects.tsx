@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-unused-expressions */
 import { useDispatch, useSelector } from 'react-redux';
 import React, {
@@ -16,6 +17,7 @@ import { ModalContext } from '../../context/ModalContext';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import AddMarkForm from '../../components/AddMarkForm/AddMarkForm';
 import CONSTANTS from '../../utils/constants';
+import ErrorModalData from '../../components/ErrorModalData/ErrorModalData';
 
 const Subjects = () => {
   const navigate = useNavigate();
@@ -26,7 +28,7 @@ const Subjects = () => {
   const pages = useRef<HTMLDivElement>(document.createElement('div'));
   const [isMarks, setIsMarks] = useState(false);
   const [currentPage, setCurrentPage] = useState<HTMLElement | null>(null);
-  const { addMarkModal } = useContext(ModalContext);
+  const { addMarkModal, errorModal } = useContext(ModalContext);
 
   useEffect(() => {
     if (!loginUser.isAuth) {
@@ -35,13 +37,12 @@ const Subjects = () => {
   }, [loginUser.isAuth]);
 
   useEffect(() => {
-    isMarks ? '' : setIsMarks(true);
+    isMarks ? null : setIsMarks(true);
     if (isMarks) {
       BookAnimation(currentPage as HTMLElement, pages.current.children);
     }
   }, [marks]);
 
-  // eslint-disable-next-line consistent-return
   const getAnimationData = (event: React.MouseEvent<HTMLUListElement, MouseEvent>) => {
     const elem = event.target as HTMLElement;
 
@@ -92,6 +93,12 @@ const Subjects = () => {
       && (
       <ModalWindow type={CONSTANTS.MARKS__MODAL}>
         <AddMarkForm />
+      </ModalWindow>
+      )}
+      {errorModal
+      && (
+      <ModalWindow type={CONSTANTS.ERROR__MODAL}>
+        <ErrorModalData />
       </ModalWindow>
       )}
     </section>

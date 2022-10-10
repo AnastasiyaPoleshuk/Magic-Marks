@@ -1,0 +1,40 @@
+@import '/src/App.variables.scss';
+
+.error-block {
+  width: 400px;
+  height: 22vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 15px 20px;
+
+  .error-block__title {
+    @include h2;
+    color: $main-color-yellow;
+  }
+
+  .error-block__description {
+    @include font;
+    color: $main-color-light;
+  }
+
+  .error-block__close {
+    width: 120px;
+    height: 40px;
+    background: none;
+    border: 2px solid $main-color-pink;
+    border-radius: 20px;
+    color: $main-color-light;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px 0;
+    transition: .3s;
+
+    &:hover {
+      border: 2px solid $main-color-yellow;
+      color: $main-color-yellow;
+    }
+  }
+}

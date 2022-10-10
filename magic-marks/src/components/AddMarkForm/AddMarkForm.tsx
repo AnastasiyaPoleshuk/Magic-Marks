@@ -12,7 +12,7 @@ import path from '../../assets/marks-modal-img.png';
 import './AddMarkForm.scss';
 
 const AddMarkForm = () => {
-  const { closeModal } = useContext(ModalContext);
+  const { openModal, closeModal } = useContext(ModalContext);
   const {
     register,
     handleSubmit,
@@ -38,6 +38,9 @@ const AddMarkForm = () => {
       .then(() => {
         reset();
         closeModal(CONSTANTS.MARKS__MODAL);
+      })
+      .catch(() => {
+        openModal(CONSTANTS.ERROR__MODAL);
       });
   };
 
