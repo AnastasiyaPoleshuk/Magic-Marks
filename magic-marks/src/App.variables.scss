@@ -5,7 +5,8 @@ $title-font: 24px;
 $big-font: 36px;
 $font-family: 'Mulish', sans-serif;
 $main-color-light: rgb(246, 236, 255);
-$main-color-yellow: #FFD98F;
+$main-color-yellow: #FFC652;
+// $main-color-yellow: #FFD98F;
 $main-color-pink: #DA7DA8;
 $main-color-purple: #250e52;
 $main-color-bark-blue: #3f1e6b;
@@ -13,26 +14,26 @@ $main-color-bark-blue: #3f1e6b;
 $main-width: 1400px;
 
 @mixin font {
-    font-family: $font-family;
-    font-size: $text-font;
-    font-weight: normal;
-    letter-spacing: 1;
+  font-family: $font-family;
+  font-size: $text-font;
+  font-weight: normal;
+  letter-spacing: 1;
 }
 
 @mixin h1 {
-    font-size: $big-font * 2.5;
-    font-weight: bold;
-    letter-spacing: -4px;
-    line-height: 85px;
+  font-size: $big-font * 2.5;
+  font-weight: bold;
+  letter-spacing: -4px;
+  line-height: 85px;
 }
 
 @mixin h2 {
-    font-size: $big-font * 1.5;
-    font-weight: bold;
-    letter-spacing: -2px;
+  font-size: $big-font * 1.5;
+  font-weight: bold;
+  letter-spacing: -2px;
 }
 
 @mixin h3 {
-    font-size: $big-font;
-    font-weight: bolder;
+  font-size: $big-font;
+  font-weight: bolder;
 }
