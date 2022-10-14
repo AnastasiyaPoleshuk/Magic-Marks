@@ -51,6 +51,16 @@
     }
   }
 
+  .subjects-title {
+    font-size: 54px;
+    font-weight: bold;
+    letter-spacing: -2px;
+    color: #3f1e6b;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
   .left-side,
   .right-side {
     width: 50%;
@@ -107,7 +117,7 @@
     list-style: none;
     font-size: 24px;
     color: $main-color-purple;
-    margin: 0 0 20px 50px;
+    margin: 0 0 20px 30px;
     transition: .3s;
 
     &:hover {
@@ -202,12 +212,6 @@
     backface-visibility: hidden;
     -ms-backface-visibility: hidden;
     height: 100%;
-  }
-
-  .content {
-    background: none;
-    text-align: center;
-    margin-top: 60px;
   }
 
   .hide {

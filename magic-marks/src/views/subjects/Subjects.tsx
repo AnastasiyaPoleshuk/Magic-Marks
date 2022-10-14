@@ -1,6 +1,9 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-unused-expressions */
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  useContext, useEffect, useRef, useState,
+} from 'react';
 import { AnyAction } from 'redux';
 import { useNavigate } from 'react-router-dom';
 import { IStore } from '../../types/interfaces';
@@ -8,7 +11,13 @@ import locales from '../../locales/ru-Ru';
 import BookAnimation from './animation/BookAnimation';
 import GetMarksThunk from '../../srore/thunks/GetMarksThunk';
 import SubjectsList from '../../components/SubjectsList/SubjectsList';
+import MarksList from '../../components/MarksList/MarksList';
 import './Subjects.scss';
+import { ModalContext } from '../../context/ModalContext';
+import ModalWindow from '../../components/ModalWindow/ModalWindow';
+import AddMarkForm from '../../components/AddMarkForm/AddMarkForm';
+import CONSTANTS from '../../utils/constants';
+import ErrorModalData from '../../components/ErrorModalData/ErrorModalData';
 
 const Subjects = () => {
   const navigate = useNavigate();
@@ -19,6 +28,7 @@ const Subjects = () => {
   const pages = useRef<HTMLDivElement>(document.createElement('div'));
   const [isMarks, setIsMarks] = useState(false);
   const [currentPage, setCurrentPage] = useState<HTMLElement | null>(null);
+  const { addMarkModal, errorModal } = useContext(ModalContext);
 
   useEffect(() => {
     if (!loginUser.isAuth) {
@@ -27,13 +37,12 @@ const Subjects = () => {
   }, [loginUser.isAuth]);
 
   useEffect(() => {
-    isMarks ? '' : setIsMarks(true);
+    isMarks ? null : setIsMarks(true);
     if (isMarks) {
       BookAnimation(currentPage as HTMLElement, pages.current.children);
     }
   }, [marks]);
 
-  // eslint-disable-next-line consistent-return
   const getAnimationData = (event: React.MouseEvent<HTMLUListElement, MouseEvent>) => {
     const elem = event.target as HTMLElement;
 
@@ -56,6 +65,7 @@ const Subjects = () => {
         </div>
         <div className="book__container">
           <div className="left-side">
+            <h3 className="subjects-title">{locales.labels.SubjectsPage.subjects}</h3>
             <SubjectsList animateBook={getAnimationData} />
           </div>
           <div className="right-side" ref={pages}>
@@ -71,15 +81,26 @@ const Subjects = () => {
                       <SubjectsList animateBook={getAnimationData} />
                     </div>
                     <div className="r-side">
-                      <div className="content">{marks.Marks.join(' ')}</div>
+                      <MarksList marks={marks.Marks.join(' ')} />
                     </div>
                   </div>
                 );
               })}
-
           </div>
         </div>
       </div>
+      {addMarkModal
+      && (
+      <ModalWindow type={CONSTANTS.MARKS__MODAL}>
+        <AddMarkForm />
+      </ModalWindow>
+      )}
+      {errorModal
+      && (
+      <ModalWindow type={CONSTANTS.ERROR__MODAL}>
+        <ErrorModalData />
+      </ModalWindow>
+      )}
     </section>
   );
 };

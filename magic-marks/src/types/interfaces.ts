@@ -35,6 +35,12 @@ export interface IGetMarks {
   subjectId: string,
 }
 
+export interface IUpdateMarks {
+  token: string,
+  subjectId: number,
+  marks: number[],
+}
+
 export interface ISubjects {
   SubjectId: number,
   SubjectName: string,
