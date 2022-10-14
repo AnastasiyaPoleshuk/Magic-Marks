@@ -16,6 +16,7 @@ import './Subjects.scss';
 import { ModalContext } from '../../context/ModalContext';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import AddMarkForm from '../../components/AddMarkForm/AddMarkForm';
+import DeleteMarksForm from '../../components/DeleteMarksForm/DeleteMarksForm';
 import CONSTANTS from '../../utils/constants';
 import ErrorModalData from '../../components/ErrorModalData/ErrorModalData';
 
@@ -28,7 +29,7 @@ const Subjects = () => {
   const pages = useRef<HTMLDivElement>(document.createElement('div'));
   const [isMarks, setIsMarks] = useState(false);
   const [currentPage, setCurrentPage] = useState<HTMLElement | null>(null);
-  const { addMarkModal, errorModal } = useContext(ModalContext);
+  const { addMarkModal, deleteMarkModal, errorModal } = useContext(ModalContext);
 
   useEffect(() => {
     if (!loginUser.isAuth) {
@@ -93,6 +94,12 @@ const Subjects = () => {
       && (
       <ModalWindow type={CONSTANTS.MARKS__MODAL}>
         <AddMarkForm />
+      </ModalWindow>
+      )}
+      {deleteMarkModal
+      && (
+      <ModalWindow type={CONSTANTS.MARKS_DELETE__MODAL}>
+        <DeleteMarksForm />
       </ModalWindow>
       )}
       {errorModal
