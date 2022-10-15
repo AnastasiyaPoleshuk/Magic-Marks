@@ -18,6 +18,13 @@ const locales = {
       defaultError: 'Что-то пошло не так( Пожалуйста, повторите попытку',
       wrongValueError: 'Неверное значение. Пожалуйста, проверьте данные',
     },
+    ProfilePage: {
+      profile: 'Профиль',
+      grade: 'Класс',
+      average: 'Средцяя оценка',
+      edit: 'Изменить',
+      exit: 'Выйти',
+    },
   },
   common: {
     dairy: 'Дневник',

@@ -1,0 +1,111 @@
+@import '/src/App.variables.scss';
+
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  .profile__wrapp {
+    width: 1000px;
+    height: 80vh;
+    background: $main-color-light;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 28px 0;
+  }
+
+  .profile__title {
+    @include h1;
+    color: $main-color-purple;
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .profile__info-block {
+    background: #e8def3;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 545px;
+    border-radius: 20px;
+  }
+
+  .profile__img {
+    align-self: center;
+    width: 245px;
+    border-radius: 50%;
+  }
+
+  .profile__info-block-right {
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .profile__info {
+    width: 380px;
+    text-align: center;
+    color: $main-color-bark-blue;
+
+    & span {
+      color: $main-color-pink;
+    }
+  }
+
+  .profile__block-first {
+    margin-top: 15px;
+  }
+
+  .profile__first-name {
+    @include h2;
+    text-align: start;
+    color: $main-color-yellow;
+  }
+
+  .profile__last-name {
+    @include h2;
+    text-align: end;
+    color: $main-color-yellow;
+    margin-top: 10px;
+  }
+
+  .profile__class {
+    @include h3;
+    text-align: start;
+  }
+
+  .profile__average {
+    @include h3;
+    margin-top: 15px;
+  }
+
+  .profile__edit-btn {
+    display: inline-block;
+    width: 180px;
+    height: 45px;
+    background: $main-color-yellow;
+    border: 2px solid $main-color-yellow;
+    border-radius: 20px;
+    color: $main-color-light;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    padding: 10px 0;
+    transition: .3s;
+
+    &:last-child {
+      background: $main-color-pink;
+      border: 2px solid $main-color-pink;
+      margin-left: 20px;
+    }
+
+    &:hover {
+      border: 2px solid $main-color-bark-blue;
+      color: $main-color-bark-blue;
+    }
+  }
+}
