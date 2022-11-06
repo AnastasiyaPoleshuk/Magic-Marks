@@ -8,6 +8,7 @@ import { ILoginUser, IStore } from '../../types/interfaces';
 import LoginThunk from '../../srore/thunks/LoginThunk';
 import locales from '../../locales/ru-Ru';
 import './LoginForm.scss';
+import './LoginForm.mobile.scss';
 import path from '../../assets/login-img.png';
 import GetUserThunk from '../../srore/thunks/GetUserThunk';
 import { ModalContext } from '../../context/ModalContext';
