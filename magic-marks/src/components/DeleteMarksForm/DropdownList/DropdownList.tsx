@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -41,10 +42,10 @@ const DropdownList = ({ chooseMark }: IProps) => {
         {
           marks.Marks.map((mark, index) => {
             return (
-              <>
+              <div key={index}>
                 <input id={`singleSelect${index}`} className="__select__input" type="radio" name="singleSelect" checked onChange={() => { return chooseMark(mark.toString() as string); }} />
                 <label htmlFor={`singleSelect${index}`} className="__select__label" onClick={(event) => { return closeMenu(event); }}>{mark}</label>
-              </>
+              </div>
             );
           })
         }

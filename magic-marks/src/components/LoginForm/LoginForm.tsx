@@ -21,20 +21,22 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm<ILoginUser>();
   const navigate = useNavigate();
-  const [isCorrectData, setCorrectData] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
   const { closeModal } = useContext(ModalContext);
   const dispatch = useDispatch();
   const loginUser = useSelector((state: IStore) => { return state.loginUser.login; });
 
-  useEffect(() => {
-    if (loginUser.isAuth) {
-      closeModal(`${CONSTANTS.LOGIN__MODAL}`);
-      dispatch(GetUserThunk({ token: loginUser.token }) as unknown as AnyAction);
-      navigate('/subjects');
-    } else {
-      setCorrectData(loginUser.isAuth);
-    }
-  }, [loginUser.isAuth]);
+  useEffect(
+    () => {
+      if (loginUser.isAuth) {
+        closeModal(`${CONSTANTS.LOGIN__MODAL}`);
+        dispatch(GetUserThunk({ token: loginUser.token }) as unknown as AnyAction);
+        navigate('/subjects');
+      }
+      setIsAuth(loginUser.isAuth);
+    },
+    [loginUser.isAuth],
+  );
 
   const onSubmit: SubmitHandler<ILoginUser> = (data) => {
     dispatch(LoginThunk(data) as unknown as AnyAction)
@@ -72,7 +74,7 @@ const LoginForm = () => {
           </p>
 
           {
-            !isCorrectData && (
+            isAuth && (
             <p className="wrong-data">
               {locales.labels.loginForm.loginError}
             </p>
