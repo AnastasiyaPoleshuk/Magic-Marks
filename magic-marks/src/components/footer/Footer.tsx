@@ -1,4 +1,5 @@
 import './Footer.scss';
+import './Footer.mobile.scss';
 
 const Footer = () => {
   return (

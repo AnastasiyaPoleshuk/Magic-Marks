@@ -1,0 +1,11 @@
+@import '/src/App.variables.scss';
+
+@media (max-width: 425px) {
+  .footer {
+    height: 50px;
+
+    .footer-item {
+      font-size: $descr-font;
+    }
+  }
+}
