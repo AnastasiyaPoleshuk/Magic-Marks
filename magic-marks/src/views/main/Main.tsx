@@ -6,6 +6,7 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 import { IStore } from '../../types/interfaces';
 import locales from '../../locales/ru-Ru';
 import './Main.scss';
+import './Main.mobile.scss';
 import path from '../../assets/main-image.png';
 import { ModalContext } from '../../context/ModalContext';
 import CONSTANTS from '../../utils/constants';

@@ -1,0 +1,62 @@
+@import '/src/App.variables.scss';
+
+@media (max-width: 425px) {
+  .main {
+    height: 85vh;
+    justify-content: space-around;
+
+    .title-blok {
+      margin-top: 20px;
+    }
+
+    .description-top {
+      display: none;
+    }
+
+    .title {
+      width: 100%;
+      font-size: 60px;
+      font-weight: bold;
+      letter-spacing: -2px;
+      line-height: 15px;
+      text-transform: uppercase;
+    }
+
+    .title__part-one {
+      & span {
+        font-size: $descr-font;
+        width: 185px;
+        line-height: 12px;
+        color: $main-color-pink;
+        margin: 0px 0 0 10px;
+      }
+    }
+
+    .title__part-two {
+      margin-top: 20px;
+    }
+
+    .description-block {
+      height: 70%;
+      flex-direction: column;
+      margin: 0;
+    }
+
+    .description-bottom {
+      width: 100%;
+      font-style: italic;
+      font-size: $text-font;
+      margin-bottom: 25px;
+    }
+
+    .log-in__btn,
+    .subjects__btn {
+      width: 130px;
+      height: 35px;
+    }
+
+    .main-img {
+      height: 160px;
+    }
+  }
+}

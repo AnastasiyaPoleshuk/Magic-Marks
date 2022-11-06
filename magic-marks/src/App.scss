@@ -1,6 +1,12 @@
 @import './App.variables.scss';
 
 .app {
-    max-width: $main-width;
-    margin: 0 auto;
+  max-width: $main-width;
+  margin: 0 auto;
+
+  @media (max-width: 425px) {
+    & {
+      max-width: 400px;
+    }
+  }
 }
