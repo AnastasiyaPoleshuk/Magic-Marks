@@ -13,6 +13,7 @@ import GetMarksThunk from '../../srore/thunks/GetMarksThunk';
 import SubjectsList from '../../components/SubjectsList/SubjectsList';
 import MarksList from '../../components/MarksList/MarksList';
 import './Subjects.scss';
+import './Subjects.mobile.scss';
 import { ModalContext } from '../../context/ModalContext';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import AddMarkForm from '../../components/AddMarkForm/AddMarkForm';

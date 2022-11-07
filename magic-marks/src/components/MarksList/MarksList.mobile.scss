@@ -1,0 +1,36 @@
+@import '/src/App.variables.scss';
+
+@media (max-width: 425px) {
+  .content {
+    padding: 15px 15px 5px 15px;
+
+    .marks-title {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .marks {
+      height: 15vh;
+      font-size: $descr-font;
+      border-radius: 10px;
+      padding: 6px 10px;
+
+    }
+
+    .marks__buttons {
+      width: 150px;
+      left: 5px;
+      bottom: 35px;
+      margin-top: 20px;
+    }
+
+    .marks__button {
+      font-size: 12px;
+      padding: 3px 5px;
+    }
+
+    .marks-list__img {
+      width: 155px;
+    }
+  }
+}
