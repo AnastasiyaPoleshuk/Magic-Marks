@@ -1,5 +1,4 @@
 import './Menu.scss';
-import path from '../../assets/menu-item.png';
 
 const Menu = () => {
   return (
@@ -12,7 +11,7 @@ const Menu = () => {
             <li className="menu__item">Journal</li>
           </ul>
         </nav>
-        <img src={path} alt="menu pic" className="menu__img" />
+        <img src="" alt="menu pic" className="menu__img" />
       </div>
     </section>
   );
