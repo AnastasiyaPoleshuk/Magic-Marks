@@ -13,7 +13,7 @@
 
 An app for students to track their progress. The application allows you to add or delete grades, view the average grade both for all subjects and for each separately.
 
-Application late by agile method ([link to kunban board](https://magicmark.atlassian.net/jira/software/projects/MM/boards/1)).
+Application made by agile method ([link to kunban board](https://magicmark.atlassian.net/jira/software/projects/MM/boards/1)).
 
 ## Demo
 
