@@ -12,13 +12,20 @@ interface MarksListProps {
 const MarksList = ({ marks }: MarksListProps) => {
   const { openModal } = useContext(ModalContext);
 
+  const disableState = () => {
+    if (marks) {
+      return false;
+    }
+    return true;
+  };
+
   return (
     <div className="content">
       <h2 className="marks-title">{locales.common.marks}</h2>
       <article className="marks">{marks}</article>
       <div className="marks__buttons">
         <button type="submit" className="marks__button" onClick={() => { return openModal(CONSTANTS.MARKS__MODAL); }}>{locales.common.add}</button>
-        <button type="submit" className="marks__button" onClick={() => { return openModal(CONSTANTS.MARKS_DELETE__MODAL); }}>{locales.common.delete}</button>
+        <button type="submit" className="marks__button" disabled={disableState()} onClick={() => { return openModal(CONSTANTS.MARKS_DELETE__MODAL); }}>{locales.common.delete}</button>
       </div>
       <img src={path} alt="" className="marks-list__img" />
     </div>

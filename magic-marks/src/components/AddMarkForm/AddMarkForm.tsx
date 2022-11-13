@@ -1,4 +1,5 @@
-import { useContext, useEffect } from 'react';
+/* eslint-disable react/no-this-in-sfc */
+import { ChangeEvent, useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnyAction } from 'redux';
@@ -44,6 +45,16 @@ const AddMarkForm = () => {
       });
   };
 
+  const validateMark = (event: ChangeEvent<HTMLInputElement>) => {
+    const mark = event.target as HTMLInputElement;
+
+    if (+mark.value > 10) {
+      mark.value = `${+mark.value - 1}`;
+    } else if (+mark.value <= 0) {
+      mark.value = `${1}`;
+    }
+  };
+
   return (
     <div className="marks-form__container">
       <form action="#" className="marks-form" onSubmit={handleSubmit(onSubmit)}>
@@ -54,6 +65,7 @@ const AddMarkForm = () => {
           className={`marks-form__input ${errors.marks ? 'input-error' : null}`}
           placeholder={locales.common.marks}
           {...register('marks', { required: true, min: 1, max: 10 })}
+          onChange={(event) => { validateMark(event); }}
         />
         <p className={`form-error ${errors.marks ? 'open' : null}`}>
           {locales.labels.SubjectsPage.marksError}

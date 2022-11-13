@@ -23,23 +23,6 @@
     color: $main-color-yellow;
   }
 
-  .marks-form__input {
-    width: 200px;
-    height: 35px;
-    border: 2px solid $main-color-pink;
-    border-radius: 15px;
-    padding: 5px 10px;
-    margin-top: 30px;
-    outline: 0;
-  }
-
-  .form-error {
-    width: 70%;
-    ;
-    margin-top: 10px;
-    visibility: hidden;
-    color: rgb(223, 56, 92);
-  }
 
   .open {
     visibility: visible;

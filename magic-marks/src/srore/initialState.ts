@@ -18,7 +18,6 @@ const initialState = {
     AverageMark: 0,
     Marks: [],
   },
-  isAuth: false,
 };
 
 export default initialState;

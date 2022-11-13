@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnyAction } from 'redux';
@@ -10,25 +10,30 @@ import { IStore } from '../../types/interfaces';
 import CONSTANTS from '../../utils/constants';
 import path from '../../assets/marks-modal-img.png';
 import './DeleteMarksForm.scss';
+import DropdownList from './DropdownList/DropdownList';
 
 const DeleteMarksForm = () => {
   const { openModal, closeModal, changeMessage } = useContext(ModalContext);
   const {
-    register,
     handleSubmit,
     reset,
-    formState: { errors },
+
   } = useForm<{marks: number}>();
   const dispatch = useDispatch();
   const token = useSelector((state: IStore) => { return state.loginUser.login.token; });
   const marks = useSelector((state: IStore) => { return state.marks.marks; });
+  const [deletedMark, setDeletedMark] = useState<string>('');
 
   useEffect(() => {
     dispatch(GetUserThunk({ token }) as unknown as AnyAction);
   }, [marks]);
 
-  const onSubmit: SubmitHandler<{marks: number}> = (data) => {
-    const index = marks.Marks.indexOf(+data.marks);
+  const chooseMark = (mark: string) => {
+    setDeletedMark(mark);
+  };
+
+  const onSubmit: SubmitHandler<{marks: number}> = () => {
+    const index = marks.Marks.indexOf(+deletedMark);
 
     if (index === -1) {
       changeMessage(locales.labels.SubjectsPage.wrongValueError);
@@ -57,16 +62,7 @@ const DeleteMarksForm = () => {
       <img src={path} alt="marks-modal-img" className="marks-modal-img" />
       <form action="#" className="marks-form" onSubmit={handleSubmit(onSubmit)}>
         <h3 className="modal-title">{locales.labels.SubjectsPage.deleteMark}</h3>
-
-        <input
-          type="number"
-          className={`marks-form__input ${errors.marks ? 'input-error' : null}`}
-          placeholder={locales.common.marks}
-          {...register('marks', { required: true, min: 1, max: 10 })}
-        />
-        <p className={`form-error ${errors.marks ? 'open' : null}`}>
-          {locales.labels.SubjectsPage.marksError}
-        </p>
+        <DropdownList chooseMark={chooseMark} />
         <div className="form-btn__wrapper">
           <input type="submit" value={locales.common.delete} className="form-btn" />
           <input type="button" onClick={() => { return closeModal(CONSTANTS.MARKS_DELETE__MODAL); }} value={locales.common.cancel} className="form-btn" />
