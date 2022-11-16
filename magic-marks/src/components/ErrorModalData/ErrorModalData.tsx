@@ -3,6 +3,7 @@ import { ModalContext } from '../../context/ModalContext';
 import locales from '../../locales/ru-Ru';
 import CONSTANTS from '../../utils/constants';
 import './ErrorModalData.scss';
+import './ErrorModalData.mobile.scss';
 
 const ErrorModalData = () => {
   const { errorMessage, closeModal } = useContext(ModalContext);

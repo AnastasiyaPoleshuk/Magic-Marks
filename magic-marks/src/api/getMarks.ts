@@ -10,7 +10,6 @@ const getMarks = async (data: IGetMarks) => {
   });
   const status = await response.status;
   const resultData = await response.json();
-
   return { resultData, status };
 };
 

@@ -4,9 +4,15 @@
   max-width: $main-width;
   margin: 0 auto;
 
+  @media (max-width: 768px) {
+    & {
+      max-width: 760px;
+    }
+  }
+
   @media (max-width: 425px) {
     & {
-      max-width: 400px;
+      max-width: 425px;
     }
   }
 }
