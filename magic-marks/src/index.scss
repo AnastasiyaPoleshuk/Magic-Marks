@@ -41,7 +41,10 @@ body {
   flex: 1 0 auto;
 }
 
-.footer {
+#root,
+.footer,
+.header,
+.container {
   width: 100%;
   flex: 0 0 auto;
 }

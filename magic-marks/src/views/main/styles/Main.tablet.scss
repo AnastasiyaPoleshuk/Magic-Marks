@@ -1,9 +1,10 @@
 @import '/src/App.variables.scss';
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .main {
     height: 90vh;
     justify-content: start;
+    overflow: scroll;
 
     .description-top {
       width: fit-content;
