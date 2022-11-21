@@ -10,7 +10,9 @@ import GetUserThunk from '../../srore/thunks/GetUserThunk';
 import { IStore } from '../../types/interfaces';
 import CONSTANTS from '../../utils/constants';
 import path from '../../assets/marks-modal-img.png';
-import './AddMarkForm.scss';
+import './styles/AddMarkForm.scss';
+import './styles/AddMarkForm.tablet.scss';
+import './styles/AddMarkForm.mobile.scss';
 
 const AddMarkForm = () => {
   const { openModal, closeModal } = useContext(ModalContext);

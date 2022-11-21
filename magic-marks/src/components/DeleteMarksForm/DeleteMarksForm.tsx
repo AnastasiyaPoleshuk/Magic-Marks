@@ -9,7 +9,9 @@ import GetUserThunk from '../../srore/thunks/GetUserThunk';
 import { IStore } from '../../types/interfaces';
 import CONSTANTS from '../../utils/constants';
 import path from '../../assets/marks-modal-img.png';
-import './DeleteMarksForm.scss';
+import './styles/DeleteMarksForm.scss';
+import './styles/DeleteMarksForm.tablet.scss';
+import './styles/DeleteMarksForm.mobile.scss';
 import DropdownList from './DropdownList/DropdownList';
 
 const DeleteMarksForm = () => {

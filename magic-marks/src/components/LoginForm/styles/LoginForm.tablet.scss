@@ -1,0 +1,19 @@
+@import '/src/App.variables.scss';
+
+@media (max-width: 768px) {
+  .login-form__container {
+    width: 350px;
+    height: 70vh;
+    padding: 15px;
+
+    & form {
+      width: 95%;
+      height: 80%;
+      margin-top: 15px;
+    }
+
+    .login-form__img {
+      width: 70px;
+    }
+  }
+}

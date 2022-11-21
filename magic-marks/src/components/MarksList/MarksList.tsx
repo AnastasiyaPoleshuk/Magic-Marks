@@ -3,8 +3,9 @@ import { ModalContext } from '../../context/ModalContext';
 import locales from '../../locales/ru-Ru/index';
 import CONSTANTS from '../../utils/constants';
 import path from '../../assets/subject-page-img.png';
-import './MarksList.scss';
-import './MarksList.mobile.scss';
+import './styles/MarksList.scss';
+import './styles/MarksList.tablet.scss';
+import './styles/MarksList.mobile.scss';
 
 interface MarksListProps {
   marks: string

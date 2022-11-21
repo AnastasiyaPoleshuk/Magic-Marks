@@ -1,0 +1,19 @@
+@import '/src/App.variables.scss';
+
+@media (max-width: 768px) {
+  .marks-form__container {
+    width: 500px;
+    width: 550px;
+    height: 45vh;
+
+    .form-error {
+      width: 40vw;
+      margin-top: 10px;
+      font-size: $descr-font;
+    }
+
+    .marks-modal-img {
+      width: 170px;
+    }
+  }
+}

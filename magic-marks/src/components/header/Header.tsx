@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import './Header.scss';
-import './Header.mobile.scss';
+import './styles/Header.scss';
+import './styles/Header.mobile.scss';
+import './styles/Header.tablet.scss';
 import { useSelector } from 'react-redux';
 import { useContext } from 'react';
 import path from '../../assets/logo.png';
