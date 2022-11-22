@@ -17,7 +17,7 @@ Application made by agile method ([link to kunban board](https://magicmark.atlas
 
 ## Demo
 
-NEED TO CHANGE!!! [Magic Marks](https://magic-marks.netlify.app/)
+[Magic Marks](https://magic-marks-22-23.netlify.app/))
 
 ### Test user:
 
