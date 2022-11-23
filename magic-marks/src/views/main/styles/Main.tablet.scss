@@ -1,6 +1,6 @@
 @import '/src/App.variables.scss';
 
-@media (max-width: 900px) {
+@media (max-width: 1334px) {
   .main {
     height: 90vh;
     justify-content: start;
@@ -8,25 +8,24 @@
 
     .description-top {
       width: fit-content;
-      font-size: 12px;
+      font-size: 14px;
       align-self: flex-start;
-      margin: 30px 0 0px 100px;
+      margin: 40px 0 15px 270px;
     }
 
     .title {
+      font-size: 125px;
+      line-height: 53px;
       width: 100%;
-      @include h1;
-      line-height: 32px;
-      text-transform: uppercase;
     }
 
     .title__part-one {
       & span {
         font-size: $subtitle-font;
-        width: 280px;
+        width: 200px;
         line-height: 20px;
         color: $main-color-pink;
-        margin: 0px 0 0 10px;
+        margin: 0px 0 0 209px;
       }
     }
 
@@ -35,12 +34,12 @@
     }
 
     .description-block {
-      margin-top: 30px;
+      justify-content: center;
+      margin-top: 60px;
     }
 
     .description-bottom {
-      width: 80%;
-      margin-bottom: 30px;
+      width: 50%;
     }
 
     .log-in__btn,
@@ -49,9 +48,60 @@
     }
 
     .main-img {
-      height: 155px;
-      width: 300px;
+      height: 275px;
+      width: 500px;
       flex: none;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .main {
+    height: 90vh;
+    justify-content: center;
+    overflow: scroll;
+
+    .description-top {
+      margin: 50px 0 10px 23px;
+    }
+
+    .title {
+      font-size: 100px;
+      line-height: 5px;
+      width: 100%;
+    }
+
+    .title__part-one {
+      & span {
+        margin: 0px 0 30px 124px;
+      }
+    }
+
+    .title__part-two {
+      margin-top: 20px;
+    }
+
+    .description-block {
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 100px;
+    }
+
+    .description-bottom {
+      width: 70%;
+      font-size: $title-font;
+    }
+
+    .log-in__btn,
+    .subjects__btn {
+      width: 300px;
+      height: 50px;
+      border-radius: 25px;
+      font-size: $title-font;
+    }
+
+    .main-img {
+      margin-top: 100px;
     }
   }
 }

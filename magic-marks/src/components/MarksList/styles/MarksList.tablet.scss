@@ -1,6 +1,6 @@
 @import '/src/App.variables.scss';
 
-@media (max-width: 768px) {
+@media (max-width: 1334px) {
   .content {
     padding: 15px 15px 5px 30px;
 
@@ -9,20 +9,28 @@
       margin-bottom: 20px;
     }
 
-    .marks__buttons {
-      width: 280px;
-      left: 0px;
-      bottom: 20px;
-      margin-top: 20px;
-      position: static;
+    .marks {
+      height: 240px;
+      padding: 15px 20px;
     }
 
-    .marks__button {
-      padding: 5px 15px;
+    .marks__buttons {
+          width: 332px;
+            left: 45px;
+            bottom: 63px;
+      margin-top: 20px;
     }
 
     .marks-list__img {
-      display: none;
+          width: 360px;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .content {
+    .marks {
+      height: 190px;
     }
   }
 }

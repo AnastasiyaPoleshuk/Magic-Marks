@@ -53,9 +53,15 @@ body {
   width: $main-width;
   margin: 0 auto;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1334px) {
     & {
-      max-width: 760px;
+      max-width: 1334px;
+    }
+  }
+
+  @media (max-width: 800px) {
+    & {
+      max-width: 800px;
     }
   }
 
