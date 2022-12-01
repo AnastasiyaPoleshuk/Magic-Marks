@@ -1,0 +1,98 @@
+@import '/src/App.variables.scss';
+
+@media (max-width: 1334px) {
+  @import '/src/App.variables.scss';
+
+  .profile {
+    .profile__wrapp {
+      height: 600px;
+    }
+
+    .profile__title {
+      margin-bottom: 55px;
+    }
+
+    .profile__info-block {
+      height: 75%;
+    }
+
+    .profile__img {
+      align-self: center;
+      width: 245px;
+      border-radius: 50%;
+    }
+
+    .profile__info-block-right {
+      height: 90%;
+    }
+
+  }
+}
+
+@media (max-width: 800px) {
+  .profile {
+
+    .profile__wrapp {
+      width: 90%;
+      height: 1100px;
+    }
+
+    .profile__title {
+      margin-bottom: 50px;
+    }
+
+    .profile__info-block {
+      flex-direction: column;
+      height: 87%;
+      border-radius: 15px;
+      padding: 20px 15px;
+    }
+
+    .profile__info-block-right {
+      height: 500px;
+      width: 650px;
+    }
+
+    .profile__block-first {
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    .profile__first-name {
+      text-align: start;
+      color: $main-color-yellow;
+      font-size: $big-font * 2;
+      width: 100%;
+    }
+
+    .profile__last-name {
+      text-align: end;
+      color: $main-color-yellow;
+      margin-top: 10px;
+      font-size: $big-font * 2;
+      width: 100%;
+    }
+
+    .profile__class {
+      @include h3;
+      font-size: $big-font * 1.5;
+      text-align: start;
+      width: 100%;
+    }
+
+    .profile__average {
+      @include h3;
+      margin-top: 15px;
+      font-size: $big-font * 1.5;
+      width: 100%;
+    }
+
+    .profile__edit-btn {
+      width: 280px;
+      border-radius: 30px;
+      color: $main-color-light;
+      height: 60px;
+      font-size: $title-font;
+    }
+  }
+}

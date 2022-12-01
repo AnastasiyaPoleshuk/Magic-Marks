@@ -4,7 +4,9 @@ import { useSelector } from 'react-redux';
 import { IStore } from '../../types/interfaces';
 import locales from '../../locales/ru-Ru';
 import path from '../../assets/profile-img.png';
-import './Profile.scss';
+import './styles/Profile.scss';
+import './styles/Profile.tablet.scss';
+import './styles/Profile.mobile.scss';
 
 const Profile = () => {
   const navigate = useNavigate();
