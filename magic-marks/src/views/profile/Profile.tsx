@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { IStore } from '../../types/interfaces';
-import locales from '../../locales/ru-Ru';
 import path from '../../assets/profile-img.png';
 import './Profile.scss';
 
@@ -10,6 +10,7 @@ const Profile = () => {
   const navigate = useNavigate();
   const loginUser = useSelector((state: IStore) => { return state.loginUser.login; });
   const user = useSelector((state: IStore) => { return state.user.user; });
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!loginUser.isAuth) {
@@ -21,7 +22,7 @@ const Profile = () => {
     <section className="container">
       <div className="profile">
         <div className="profile__wrapp">
-          <h1 className="profile__title">{locales.labels.ProfilePage.profile}</h1>
+          <h1 className="profile__title">{t('labels.ProfilePage.profile')}</h1>
           <div className="profile__info-block">
             <img src={path} alt="profile img" className="profile__img" />
             <div className="profile__info-block-right">
@@ -31,19 +32,19 @@ const Profile = () => {
               </div>
               <div className="profile__block">
                 <h3 className="profile__info profile__class">
-                  {locales.labels.ProfilePage.grade}
+                  {t('labels.ProfilePage.grade')}
                   {': '}
                   <span>{user.Class}</span>
                 </h3>
                 <h3 className=" profile__info profile__average">
-                  {locales.labels.ProfilePage.average}
+                  {t('labels.ProfilePage.average')}
                   {': '}
                   <span>{user.AverageMark}</span>
                 </h3>
               </div>
               <div className="profile__block">
-                <button type="button" className="profile__info profile__edit-btn">{locales.labels.ProfilePage.edit}</button>
-                <button type="button" className="profile__info profile__edit-btn">{locales.labels.ProfilePage.exit}</button>
+                <button type="button" className="profile__info profile__edit-btn">{t('labels.ProfilePage.edit')}</button>
+                <button type="button" className="profile__info profile__edit-btn">{t('labels.ProfilePage.exit')}</button>
               </div>
 
             </div>

@@ -70,7 +70,7 @@
     &.menu__login::after {
       content: '';
       position: absolute;
-      left: 5px;
+      left: 71px;
       bottom: -1px;
       height: 2px;
       width: 0px;
@@ -86,6 +86,8 @@
     }
   }
 
-
+  .menu__lang {
+    margin: 0 20px;
+  }
 
 }

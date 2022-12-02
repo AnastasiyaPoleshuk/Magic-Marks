@@ -6,8 +6,8 @@ import React, {
 } from 'react';
 import { AnyAction } from 'redux';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { IStore } from '../../types/interfaces';
-import locales from '../../locales/ru-Ru';
 import BookAnimation from './animation/BookAnimation';
 import GetMarksThunk from '../../srore/thunks/GetMarksThunk';
 import SubjectsList from '../../components/SubjectsList/SubjectsList';
@@ -30,6 +30,7 @@ const Subjects = () => {
   const [isMarks, setIsMarks] = useState(false);
   const [currentPage, setCurrentPage] = useState<HTMLElement | null>(null);
   const { addMarkModal, deleteMarkModal, errorModal } = useContext(ModalContext);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!loginUser.isAuth) {
@@ -61,12 +62,12 @@ const Subjects = () => {
     <section className="container">
       <div className="subjects">
         <div className="title-container">
-          <h2 className="title">{locales.common.dairy}</h2>
+          <h2 className="title">{t('common.dairy')}</h2>
           <div className="average">{user.AverageMark}</div>
         </div>
         <div className="book__container">
           <div className="left-side">
-            <h3 className="subjects-title">{locales.labels.SubjectsPage.subjects}</h3>
+            <h3 className="subjects-title">{t('labels.SubjectsPage.subjects')}</h3>
             <SubjectsList animateBook={getAnimationData} />
           </div>
           <div className="right-side" ref={pages}>

@@ -3,8 +3,8 @@ import { ChangeEvent, useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnyAction } from 'redux';
+import { useTranslation } from 'react-i18next';
 import { ModalContext } from '../../context/ModalContext';
-import locales from '../../locales/ru-Ru';
 import UpdateMarksThunk from '../../srore/thunks/UpdateMarksThunk';
 import GetUserThunk from '../../srore/thunks/GetUserThunk';
 import { IStore } from '../../types/interfaces';
@@ -23,6 +23,7 @@ const AddMarkForm = () => {
   const dispatch = useDispatch();
   const token = useSelector((state: IStore) => { return state.loginUser.login.token; });
   const marks = useSelector((state: IStore) => { return state.marks.marks; });
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(GetUserThunk({ token }) as unknown as AnyAction);
@@ -58,21 +59,21 @@ const AddMarkForm = () => {
   return (
     <div className="marks-form__container">
       <form action="#" className="marks-form" onSubmit={handleSubmit(onSubmit)}>
-        <h3 className="modal-title">{locales.labels.SubjectsPage.addMark}</h3>
+        <h3 className="modal-title">{t('labels.SubjectsPage.addMark')}</h3>
 
         <input
           type="number"
           className={`marks-form__input ${errors.marks ? 'input-error' : null}`}
-          placeholder={locales.common.marks}
+          placeholder={`${t('common.marks')}`}
           {...register('marks', { required: true, min: 1, max: 10 })}
           onChange={(event) => { validateMark(event); }}
         />
         <p className={`form-error ${errors.marks ? 'open' : null}`}>
-          {locales.labels.SubjectsPage.marksError}
+          {t('labels.SubjectsPage.marksError')}
         </p>
         <div className="form-btn__wrapper">
-          <input type="submit" value={locales.common.ok} className="form-btn" />
-          <input type="button" onClick={() => { return closeModal(CONSTANTS.MARKS__MODAL); }} value={locales.common.cancel} className="form-btn" />
+          <input type="submit" value={`${t('common.ok')}`} className="form-btn" />
+          <input type="button" onClick={() => { return closeModal(CONSTANTS.MARKS__MODAL); }} value={`${t('common.cancel')}`} className="form-btn" />
         </div>
       </form>
       <img src={path} alt="marks-modal-img" className="marks-modal-img" />
