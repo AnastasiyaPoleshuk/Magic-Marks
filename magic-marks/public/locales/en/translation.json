@@ -1,0 +1,44 @@
+{
+  "labels": {
+    "mainPage": {
+      "previewText": "Web application for achieving goals",
+      "previewTextTwo": "Control your progress",
+      "description": "The application allows you to view grades, track progress both in each subject separately, and overall performance in all subjects"
+    },
+    "loginForm": {
+      "emailError": "*The field must contain email",
+      "passwordError": "*Password must be at least 3 characters long",
+      "loginError": "Wrong login or password"
+    },
+    "SubjectsPage": {
+      "subjects": "Subjects",
+      "addMark": "Add mark",
+      "deleteMark": "Delete mark",
+      "chooseMark": "Choose mark",
+      "marksError": "*Content must be between 1 and 10",
+      "defaultError": "Something went wrong :( Please, try again",
+      "wrongValueError": "Wrong value. Please, check the data"
+    },
+    "ProfilePage": {
+      "profile": "Profile",
+      "grade": "Grade",
+      "average": "Average mark",
+      "edit": "Edit",
+      "exit": "Exit"
+    }
+  },
+  "common": {
+    "dairy": "Journal",
+    "login": "Login",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "ok": "Ok",
+    "add": "Add",
+    "delete": "Delete",
+    "marks": "Marks",
+    "oops": "Oops!",
+    "email": "Email",
+    "password": "Password",
+    "lang": "ru"
+  }
+}
