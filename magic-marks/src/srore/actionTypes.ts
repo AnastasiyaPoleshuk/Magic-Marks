@@ -4,3 +4,5 @@ export const GET__USER = 'GET__USER';
 export const GET__MARKS = 'GET__MARKS';
 export const CHECK__AUTH = 'CHECK__AUTH';
 export const UPDATE__MARKS = 'UPDATE__MARKS';
+export const CREATE__USER = 'CREATE__USER';
+export const CREATE__USER__FAILED = 'CREATE__USER__FAILED';

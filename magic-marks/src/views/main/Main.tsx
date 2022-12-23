@@ -4,14 +4,18 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import LoginForm from '../../components/LoginForm/LoginForm';
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 import { IStore } from '../../types/interfaces';
 import './Main.scss';
 import path from '../../assets/main-image.png';
 import { ModalContext } from '../../context/ModalContext';
 import CONSTANTS from '../../utils/constants';
+import ErrorModalData from '../../components/ErrorModalData/ErrorModalData';
 
 const Main = () => {
-  const { loginModal, openModal } = useContext(ModalContext);
+  const {
+    loginModal, registrationModal, errorModal, openModal,
+  } = useContext(ModalContext);
   const loginUser = useSelector((state: IStore) => { return state.loginUser.login; });
   const { t } = useTranslation();
 
@@ -44,6 +48,18 @@ const Main = () => {
       && (
       <ModalWindow type={CONSTANTS.LOGIN__MODAL}>
         <LoginForm />
+      </ModalWindow>
+      )}
+      {registrationModal
+      && (
+      <ModalWindow type={CONSTANTS.REGISTRATION__MODAL}>
+        <RegistrationForm />
+      </ModalWindow>
+      )}
+      {errorModal
+      && (
+      <ModalWindow type={CONSTANTS.ERROR__MODAL}>
+        <ErrorModalData />
       </ModalWindow>
       )}
 

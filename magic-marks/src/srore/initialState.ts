@@ -3,6 +3,14 @@ const initialState = {
     token: '',
     isAuth: false,
   },
+  registration: {
+    isUserCreated: false,
+    message: '',
+  },
+  error: {
+    isError: false,
+    errorMessage: '',
+  },
   user: {
     UserId: '',
     Email: '',

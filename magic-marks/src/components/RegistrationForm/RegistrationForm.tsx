@@ -1,42 +1,93 @@
+import {
+  useContext, useEffect, useState,
+} from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-// import { useDispatch, useSelector } from 'react-redux';
-import { IRegistrationFormData } from '../../types/interfaces';
-// import LoginThunk from '../../srore/thunks/LoginThunk';
-import './RegistrationForm.scss';
+import { useNavigate } from 'react-router-dom';
+import { AnyAction } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { ILoginUser, IRegistrationFormData, IStore } from '../../types/interfaces';
+import CreateUserThunk from '../../srore/thunks/CreateUserThunk';
+import LoginThunk from '../../srore/thunks/LoginThunk';
+import GetUserThunk from '../../srore/thunks/GetUserThunk';
+import { ModalContext } from '../../context/ModalContext';
+import CONSTANTS from '../../utils/constants';
 import path from '../../assets/login-img.png';
-// import UserAction from '../../srore/actions/UserAction';
+import './RegistrationForm.scss';
 
-interface IProps {
-  close: () => void,
-}
-
-const LoginForm = (props: IProps) => {
-  const { close } = props;
+const RegistrationForm = () => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<IRegistrationFormData>();
-  // const dispatch = useDispatch();
-  // const user = useSelector((state: IStore) => { return state.loginUser; });
+  const [loginData, setLoginData] = useState<ILoginUser>({ email: '', password: '' });
+  const { closeModal, openModal, changeMessage } = useContext(ModalContext);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const loginUser = useSelector((state: IStore) => { return state.loginUser.login; });
+  const createUserFailed = useSelector((state: IStore) => { return state.createUser.error; });
+  const createdUser = useSelector((state: IStore) => { return state.createUser.registration; });
+  const { t } = useTranslation();
 
-  const onSubmit: SubmitHandler<IRegistrationFormData> = () => {
-    reset();
-    close();
+  useEffect(
+    () => {
+      if (createUserFailed.isError) {
+        changeMessage(createUserFailed.errorMessage);
+        openModal(CONSTANTS.ERROR__MODAL);
+      }
+    },
+    [createUserFailed.isError],
+  );
+
+  useEffect(
+    () => {
+      if (createdUser.isUserCreated) {
+        dispatch(LoginThunk(loginData) as unknown as AnyAction)
+          .then(() => {
+            reset();
+          });
+      }
+    },
+    [createdUser.isUserCreated],
+  );
+
+  useEffect(
+    () => {
+      if (loginUser.isAuth) {
+        closeModal(`${CONSTANTS.REGISTRATION__MODAL}`);
+        dispatch(GetUserThunk({ token: loginUser.token }) as unknown as AnyAction);
+        navigate('/subjects');
+      }
+    },
+    [loginUser.isAuth],
+  );
+
+  const onSubmit: SubmitHandler<IRegistrationFormData> = (data) => {
+    setLoginData({
+      email: data.email,
+      password: data.password,
+    });
+    dispatch(CreateUserThunk(data) as unknown as AnyAction);
+  };
+
+  const openLoginForm = () => {
+    closeModal(CONSTANTS.REGISTRATION__MODAL);
+    openModal(CONSTANTS.LOGIN__MODAL);
   };
 
   return (
     <div className="">
-      <div className="login-form__container">
+      <div className="registration-form__container">
         <img src={path} alt="login pic" className="login-form__img" />
         <form action="#" className="form" onSubmit={handleSubmit(onSubmit)}>
 
-          <h2 className="login-form__title">Login</h2>
-
+          <h2 className="login-form__title">{t('common.registration')}</h2>
+          <p className="login-form__openRegistration" onClick={() => { return openLoginForm(); }}>{t('labels.registrationForm.openLoginForm')}</p>
           <input
             className={`login-form__input ${errors.email ? 'input-error' : null}`}
-            placeholder="Email"
+            placeholder={`${t('common.email')}`}
             {...register('email', { required: true, pattern: /([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/ })}
           />
           <p className={`form-error ${errors.email ? null : 'none'}`}>
@@ -44,7 +95,7 @@ const LoginForm = (props: IProps) => {
           </p>
 
           <input
-            placeholder="First name"
+            placeholder={`${t('labels.registrationForm.firstName')}`}
             className={`login-form__input ${errors.firstName ? 'input-error' : null}`}
             {...register('firstName', { required: true, minLength: 3 })}
           />
@@ -54,7 +105,7 @@ const LoginForm = (props: IProps) => {
           </p>
 
           <input
-            placeholder="Last name"
+            placeholder={`${t('labels.registrationForm.lastName')}`}
             className={`login-form__input ${errors.lastName ? 'input-error' : null}`}
             {...register('lastName', { required: true, minLength: 3 })}
           />
@@ -64,18 +115,18 @@ const LoginForm = (props: IProps) => {
           </p>
 
           <input
-            placeholder="Grade"
-            className={`login-form__input ${errors.grade ? 'input-error' : null}`}
-            {...register('grade', { required: true, maxLength: 2 })}
+            placeholder={`${t('labels.registrationForm.grade')}`}
+            className={`login-form__input ${errors.class ? 'input-error' : null}`}
+            {...register('class', { required: true, maxLength: 2 })}
           />
 
-          <p className={`form-error ${errors.grade ? null : 'none'}`}>
+          <p className={`form-error ${errors.class ? null : 'none'}`}>
             *Required field of no more than two characters
           </p>
 
           <input
             type="password"
-            placeholder="Password"
+            placeholder={`${t('common.password')}`}
             className={`login-form__input ${errors.password ? 'input-error' : null}`}
             {...register('password', { required: true, minLength: 3 })}
           />
@@ -85,8 +136,8 @@ const LoginForm = (props: IProps) => {
           </p>
 
           <div className="form-btn__wrapper">
-            <input type="submit" value="Ok" className="form-btn" />
-            <input type="button" onClick={close} value="Cancel" className="form-btn" />
+            <input type="submit" value={`${t('common.submit')}`} className="form-btn" />
+            <input type="button" onClick={() => { return closeModal(CONSTANTS.REGISTRATION__MODAL); }} value={`${t('common.cancel')}`} className="form-btn" />
           </div>
         </form>
 
@@ -95,4 +146,4 @@ const LoginForm = (props: IProps) => {
   );
 };
 
-export default LoginForm;
+export default RegistrationForm;

@@ -17,7 +17,7 @@ export interface IRegistrationFormData {
   email: string;
   firstName: string;
   lastName: string;
-  grade: string;
+  class: string;
   password: string;
 }
 
@@ -64,9 +64,23 @@ export interface IGetMarksResponse {
   Marks: number[],
 }
 
+export interface IRegistration {
+  isUserCreated: boolean,
+  message: string,
+}
+
+export interface IRegistrationFailed {
+  isError: boolean;
+  errorMessage: string;
+}
+
 export interface IStore {
   loginUser: {
     login: ILogin,
+  },
+  createUser: {
+    registration: IRegistration,
+    error: IRegistrationFailed,
   },
   user: {
     user: IGetUserResponse,

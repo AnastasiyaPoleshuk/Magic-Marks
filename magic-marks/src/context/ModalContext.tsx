@@ -5,6 +5,8 @@ import locales from '../locales/ru-Ru/index';
 
 interface IModalContext {
     loginModal: boolean,
+    logoutModal: boolean,
+    registrationModal: boolean,
     addMarkModal: boolean,
     deleteMarkModal: boolean,
     errorModal: boolean,
@@ -16,6 +18,8 @@ interface IModalContext {
 
 export const ModalContext = createContext<IModalContext>({
   loginModal: false,
+  logoutModal: false,
+  registrationModal: false,
   addMarkModal: false,
   deleteMarkModal: false,
   errorModal: false,
@@ -27,6 +31,8 @@ export const ModalContext = createContext<IModalContext>({
 
 export const ModalState = ({ children }: {children: React.ReactNode}) => {
   const [loginModal, setLoginModal] = useState(false);
+  const [logoutModal, setLogoutModal] = useState(false);
+  const [registrationModal, setRegistrationModal] = useState(false);
   const [addMarkModal, setAddMarkModal] = useState(false);
   const [deleteMarkModal, setDeleteMarkModal] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
@@ -36,6 +42,12 @@ export const ModalState = ({ children }: {children: React.ReactNode}) => {
     switch (type) {
       case CONSTANTS.LOGIN__MODAL:
         setLoginModal(true);
+        break;
+      case CONSTANTS.LOGOUT__MODAL:
+        setLogoutModal(true);
+        break;
+      case CONSTANTS.REGISTRATION__MODAL:
+        setRegistrationModal(true);
         break;
       case CONSTANTS.MARKS__MODAL:
         setAddMarkModal(true);
@@ -54,6 +66,12 @@ export const ModalState = ({ children }: {children: React.ReactNode}) => {
     switch (type) {
       case CONSTANTS.LOGIN__MODAL:
         setLoginModal(false);
+        break;
+      case CONSTANTS.LOGOUT__MODAL:
+        setLogoutModal(false);
+        break;
+      case CONSTANTS.REGISTRATION__MODAL:
+        setRegistrationModal(false);
         break;
       case CONSTANTS.MARKS__MODAL:
         setAddMarkModal(false);
@@ -76,6 +94,8 @@ export const ModalState = ({ children }: {children: React.ReactNode}) => {
   return (
     <ModalContext.Provider value={{
       loginModal,
+      logoutModal,
+      registrationModal,
       addMarkModal,
       deleteMarkModal,
       errorModal,

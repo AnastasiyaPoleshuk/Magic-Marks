@@ -8,7 +8,19 @@
     "loginForm": {
       "emailError": "*The field must contain email",
       "passwordError": "*Password must be at least 3 characters long",
-      "loginError": "Wrong login or password"
+      "loginError": "Wrong login or password",
+      "openRegistrationForm": "Don't have an account yet?"
+    },
+    "logoutForm": {
+      "title": "Log out",
+      "text": "Do you really want to leave?",
+      "ok": "Leave"
+    },
+    "registrationForm": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "grade": "Grade",
+      "openLoginForm": "Already have an account?"
     },
     "SubjectsPage": {
       "subjects": "Subjects",
@@ -30,6 +42,7 @@
   "common": {
     "dairy": "Journal",
     "login": "Login",
+    "registration": "Registration",
     "submit": "Submit",
     "cancel": "Cancel",
     "ok": "Ok",

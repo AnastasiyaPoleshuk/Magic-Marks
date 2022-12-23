@@ -22,7 +22,7 @@ const LoginForm = () => {
   } = useForm<ILoginUser>();
   const navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
-  const { closeModal } = useContext(ModalContext);
+  const { closeModal, openModal } = useContext(ModalContext);
   const dispatch = useDispatch();
   const loginUser = useSelector((state: IStore) => { return state.loginUser.login; });
   const { t } = useTranslation();
@@ -46,6 +46,11 @@ const LoginForm = () => {
       });
   };
 
+  const openRegistrationForm = () => {
+    closeModal(CONSTANTS.LOGIN__MODAL);
+    openModal(CONSTANTS.REGISTRATION__MODAL);
+  };
+
   return (
     <div className="">
       <div className="login-form__container">
@@ -53,7 +58,7 @@ const LoginForm = () => {
         <form action="#" className="form" onSubmit={handleSubmit(onSubmit)}>
 
           <h2 className="login-form__title">{t('common.login')}</h2>
-
+          <p className="login-form__openRegistration" onClick={() => { return openRegistrationForm(); }}>{t('labels.loginForm.openRegistrationForm')}</p>
           <input
             className={`login-form__input ${errors.email ? 'input-error' : null}`}
             placeholder={`${t('common.email')}`}

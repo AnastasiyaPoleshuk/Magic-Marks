@@ -1,10 +1,20 @@
-import { ILoginResponse, IGetUserResponse, IGetMarksResponse } from '../../types/interfaces';
 import {
-  LOGIN__USER, GET__USER, GET__MARKS, UPDATE__MARKS,
+  ILoginResponse, IGetUserResponse, IGetMarksResponse, IRegistration,
+} from '../../types/interfaces';
+import {
+  LOGIN__USER, GET__USER, GET__MARKS, UPDATE__MARKS, CREATE__USER, CREATE__USER__FAILED,
 } from '../actionTypes';
 
 export const LoginUserAction = (payload: ILoginResponse) => {
   return { type: LOGIN__USER, payload };
+};
+
+export const CreateUserAction = (payload: IRegistration) => {
+  return { type: CREATE__USER, payload };
+};
+
+export const CreateUserFailedAction = (payload: IRegistration) => {
+  return { type: CREATE__USER__FAILED, payload };
 };
 
 export const GetUserAction = (payload: IGetUserResponse) => {

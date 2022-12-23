@@ -8,7 +8,19 @@
     "loginForm": {
       "emailError": "*Поле должно содержать email",
       "passwordError": "*Длина пароля должна быть не меньше 3 символов",
-      "loginError": "Неправильный email или пароль"
+      "loginError": "Неправильный email или пароль",
+      "openRegistrationForm": "У вас нет аккаунта?"
+    },
+    "logoutForm": {
+      "title": "Выход",
+      "text": "Выйти из аккаунта?",
+      "ok": "Выйти"
+    },
+    "registrationForm": {
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "grade": "Класс",
+      "openLoginForm": "Уже есть аккаунт?"
     },
     "SubjectsPage": {
       "subjects": "Предметы",
@@ -30,6 +42,7 @@
   "common": {
     "dairy": "Дневник",
     "login": "Войти",
+    "registration": "Регистрация",
     "submit": "Войти",
     "cancel": "Закрыть",
     "ok": "Загрузить",

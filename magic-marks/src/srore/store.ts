@@ -8,9 +8,11 @@ import thunk from 'redux-thunk';
 import UserReducer from './reducers/UserReducer';
 import GetUserReducer from './reducers/GetUserReducer';
 import GetMarksReducer from './reducers/GetMarksReducer';
+import CreateUserReducer from './reducers/CreateUserReducer';
 
 const rootReducer = combineReducers({
   loginUser: UserReducer,
+  createUser: CreateUserReducer,
   user: GetUserReducer,
   marks: GetMarksReducer,
 });
