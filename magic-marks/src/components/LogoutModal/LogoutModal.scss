@@ -1,0 +1,28 @@
+@import '/src/App.variables.scss';
+
+.form-btn__wrapper {
+  margin: 15px 0 0 0;
+}
+
+.form-btn {
+  width: 120px;
+  height: 40px;
+  background: none;
+  border: 2px solid $main-color-pink;
+  border-radius: 20px;
+  color: $main-color-light;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px 0;
+  transition: .3s;
+
+
+  &:last-child {
+    margin-left: 20px;
+  }
+
+  &:hover {
+    border: 2px solid $main-color-yellow;
+    color: $main-color-yellow;
+  }
+}

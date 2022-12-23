@@ -1,16 +1,21 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { IStore } from '../../types/interfaces';
+import { ModalContext } from '../../context/ModalContext';
+import CONSTANTS from '../../utils/constants';
 import path from '../../assets/profile-img.png';
 import './Profile.scss';
+import ModalWindow from '../../components/ModalWindow/ModalWindow';
+import LogoutModal from '../../components/LogoutModal/LogoutModal';
 
 const Profile = () => {
   const navigate = useNavigate();
   const loginUser = useSelector((state: IStore) => { return state.loginUser.login; });
   const user = useSelector((state: IStore) => { return state.user.user; });
   const { t } = useTranslation();
+  const { logoutModal, openModal } = useContext(ModalContext);
 
   useEffect(() => {
     if (!loginUser.isAuth) {
@@ -44,13 +49,19 @@ const Profile = () => {
               </div>
               <div className="profile__block">
                 <button type="button" className="profile__info profile__edit-btn">{t('labels.ProfilePage.edit')}</button>
-                <button type="button" className="profile__info profile__edit-btn">{t('labels.ProfilePage.exit')}</button>
+                <button type="button" className="profile__info profile__edit-btn" onClick={() => { return openModal(CONSTANTS.LOGOUT__MODAL); }}>{t('labels.ProfilePage.exit')}</button>
               </div>
 
             </div>
           </div>
         </div>
       </div>
+      {logoutModal
+      && (
+      <ModalWindow type={CONSTANTS.LOGOUT__MODAL}>
+        <LogoutModal />
+      </ModalWindow>
+      )}
     </section>
   );
 };
