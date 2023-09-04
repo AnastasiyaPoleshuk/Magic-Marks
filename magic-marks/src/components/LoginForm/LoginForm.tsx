@@ -1,17 +1,19 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-unused-expressions */
 import { useContext, useEffect, useState } from 'react';
 import { AnyAction } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ILoginUser, IStore } from '../../types/interfaces';
 import LoginThunk from '../../srore/thunks/LoginThunk';
-import './LoginForm.scss';
-import path from '../../assets/login-img.png';
 import GetUserThunk from '../../srore/thunks/GetUserThunk';
 import { ModalContext } from '../../context/ModalContext';
 import CONSTANTS from '../../utils/constants';
+import path from '../../assets/login-img.png';
+import './LoginForm.scss';
 
 const LoginForm = () => {
   const {
@@ -23,6 +25,7 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
   const { closeModal, openModal } = useContext(ModalContext);
+  const [cookies, setCookie] = useCookies(['token']);
   const dispatch = useDispatch();
   const loginUser = useSelector((state: IStore) => { return state.loginUser.login; });
   const { t } = useTranslation();
@@ -30,6 +33,9 @@ const LoginForm = () => {
   useEffect(
     () => {
       if (loginUser.isAuth) {
+        setCookie('token', loginUser.token, {
+          maxAge: CONSTANTS.TOKEN_EXPIRATION_TIME,
+        });
         closeModal(`${CONSTANTS.LOGIN__MODAL}`);
         dispatch(GetUserThunk({ token: loginUser.token }) as unknown as AnyAction);
         navigate('/subjects');

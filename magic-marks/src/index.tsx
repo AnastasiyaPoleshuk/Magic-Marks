@@ -1,6 +1,7 @@
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
+import { CookiesProvider } from 'react-cookie';
 import store from './srore/store';
 import App from './App';
 import { ModalState } from './context/ModalContext';
@@ -12,11 +13,13 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <Provider store={store}>
-    <ModalState>
-      <Router>
-        <App />
-      </Router>
-    </ModalState>
-  </Provider>,
+  <CookiesProvider>
+    <Provider store={store}>
+      <ModalState>
+        <Router>
+          <App />
+        </Router>
+      </ModalState>
+    </Provider>
+  </CookiesProvider>,
 );
