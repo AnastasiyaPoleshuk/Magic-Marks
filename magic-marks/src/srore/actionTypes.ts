@@ -6,3 +6,4 @@ export const CHECK__AUTH = 'CHECK__AUTH';
 export const UPDATE__MARKS = 'UPDATE__MARKS';
 export const CREATE__USER = 'CREATE__USER';
 export const CREATE__USER__FAILED = 'CREATE__USER__FAILED';
+export const IS_LOADING = 'IS_LOADING';

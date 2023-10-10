@@ -26,6 +26,7 @@ const initialState = {
     AverageMark: 0,
     Marks: [],
   },
+  isLoading: false,
 };
 
 export default initialState;

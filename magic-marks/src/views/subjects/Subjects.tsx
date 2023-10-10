@@ -19,6 +19,7 @@ import AddMarkForm from '../../components/AddMarkForm/AddMarkForm';
 import DeleteMarksForm from '../../components/DeleteMarksForm/DeleteMarksForm';
 import CONSTANTS from '../../utils/constants';
 import ErrorModalData from '../../components/ErrorModalData/ErrorModalData';
+import Loader from '../../components/Loader/Loader';
 
 const Subjects = () => {
   const navigate = useNavigate();
@@ -26,9 +27,11 @@ const Subjects = () => {
   const loginUser = useSelector((state: IStore) => { return state.loginUser.login; });
   const user = useSelector((state: IStore) => { return state.user.user; });
   const marks = useSelector((state: IStore) => { return state.marks.marks; });
+  const { isLoading: isLoadingState } = useSelector((state: IStore) => { return state.isLoading; });
   const pages = useRef<HTMLDivElement>(document.createElement('div'));
   const [isMarks, setIsMarks] = useState(false);
   const [currentPage, setCurrentPage] = useState<HTMLElement | null>(null);
+  const [isLoading, setIsLoading] = useState(isLoadingState);
   const { addMarkModal, deleteMarkModal, errorModal } = useContext(ModalContext);
   const { t } = useTranslation();
 
@@ -44,6 +47,10 @@ const Subjects = () => {
       BookAnimation(currentPage as HTMLElement, pages.current.children);
     }
   }, [marks]);
+
+  useEffect(() => {
+    setIsLoading(isLoadingState);
+  }, [isLoadingState]);
 
   const getAnimationData = (event: React.MouseEvent<HTMLUListElement, MouseEvent>) => {
     const elem = event.target as HTMLElement;
@@ -109,6 +116,9 @@ const Subjects = () => {
         <ErrorModalData />
       </ModalWindow>
       )}
+      {
+        isLoading && <Loader />
+      }
     </section>
   );
 };

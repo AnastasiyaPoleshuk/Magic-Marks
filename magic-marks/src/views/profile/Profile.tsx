@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -9,19 +9,26 @@ import path from '../../assets/profile-img.png';
 import './Profile.scss';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import LogoutModal from '../../components/LogoutModal/LogoutModal';
+import Loader from '../../components/Loader/Loader';
 
 const Profile = () => {
   const navigate = useNavigate();
   const loginUser = useSelector((state: IStore) => { return state.loginUser.login; });
   const user = useSelector((state: IStore) => { return state.user.user; });
+  const { isLoading: isLoadingState } = useSelector((state: IStore) => { return state.isLoading; });
   const { t } = useTranslation();
   const { logoutModal, openModal } = useContext(ModalContext);
+  const [isLoading, setIsLoading] = useState(isLoadingState);
 
   useEffect(() => {
     if (!loginUser.isAuth) {
       navigate('/');
     }
   }, [loginUser.isAuth]);
+
+  useEffect(() => {
+    setIsLoading(isLoadingState);
+  }, [isLoadingState]);
 
   return (
     <section className="container">
@@ -62,6 +69,9 @@ const Profile = () => {
         <LogoutModal />
       </ModalWindow>
       )}
+      {
+        isLoading && <Loader />
+      }
     </section>
   );
 };

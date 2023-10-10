@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -11,13 +11,20 @@ import path from '../../assets/main-image.png';
 import { ModalContext } from '../../context/ModalContext';
 import CONSTANTS from '../../utils/constants';
 import ErrorModalData from '../../components/ErrorModalData/ErrorModalData';
+import Loader from '../../components/Loader/Loader';
 
 const Main = () => {
   const {
     loginModal, registrationModal, errorModal, openModal,
   } = useContext(ModalContext);
   const loginUser = useSelector((state: IStore) => { return state.loginUser.login; });
+  const { isLoading: isLoadingState } = useSelector((state: IStore) => { return state.isLoading; });
   const { t } = useTranslation();
+  const [isLoading, setIsLoading] = useState(isLoadingState);
+
+  useEffect(() => {
+    setIsLoading(isLoadingState);
+  }, [isLoadingState]);
 
   return (
     <main className="container">
@@ -62,7 +69,9 @@ const Main = () => {
         <ErrorModalData />
       </ModalWindow>
       )}
-
+      {
+        isLoading && <Loader />
+      }
     </main>
   );
 };

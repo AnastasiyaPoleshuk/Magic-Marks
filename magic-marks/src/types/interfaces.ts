@@ -91,4 +91,7 @@ export interface IStore {
   isAuth: {
     isAuth: boolean,
   },
+  isLoading: {
+    isLoading: boolean,
+  },
 }
