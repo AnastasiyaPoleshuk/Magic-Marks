@@ -1,7 +1,7 @@
 @import '/src/App.variables.scss';
 
 .header {
-  height: 70px;
+  width: 100%;
   background: $main-color-bark-blue;
 
   .header__container {
@@ -13,13 +13,16 @@
 
   .btn-home {
     width: 45px;
-    height: 45px;
     box-sizing: border-box;
   }
 
   .logo {
     width: 55px;
-    height: 45px;
+
+    
+    @media (max-width: 425px) {
+      width: 40px;
+    }
   }
 
   nav {
@@ -27,7 +30,6 @@
   }
 
   .menu {
-    width: 200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,6 +49,11 @@
 
     .menu__profile {
       width: 50px;
+
+      
+      @media (max-width: 425px) {
+        width: 40px;
+      } 
     }
 
     &.menu__subjects::after {

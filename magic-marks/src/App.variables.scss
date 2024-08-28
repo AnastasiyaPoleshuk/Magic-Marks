@@ -21,10 +21,10 @@ $main-width: 1400px;
 }
 
 @mixin h1 {
-  font-size: $big-font * 2.5;
-  font-weight: bold;
-  letter-spacing: -4px;
-  line-height: 85px;
+    font-size: $big-font * 2.5;
+    font-weight: bold;
+    letter-spacing: -4px;
+    line-height: 85px;
 }
 
 @mixin h2 {

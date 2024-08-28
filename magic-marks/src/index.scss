@@ -48,4 +48,17 @@ body {
 .container {
     width: $main-width;
     margin: 0 auto;
+
+    
+    @media (max-width: 1024px) {
+        width: 1000px;
+    }
+
+    @media (max-width: 833px) {
+        width: 833px;
+    }
+
+    @media (max-width: 425px) {
+        width: 95%;
+    }
 }
